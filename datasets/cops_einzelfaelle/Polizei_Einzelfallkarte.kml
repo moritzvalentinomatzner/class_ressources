@@ -1,0 +1,1185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>Polizei Einzelfallkarte</name>
+    <description><![CDATA[Ein Einzelfall<br><br>Um einen Einblick in die Einzelfälle der vergangenen Zeit zu gewähren, hat die Stay Behind Foundation diese Karte erstellt. Eine Karte mit Einzelfällen, die in den vergangenen Jahren öffentlich wurden. Es haben nur diejenigen Einzelfälle Eingang gefunden, die 1. öffentlich wurden und 2. von Polizeiführung, Innenministerium oder Justiz bestätigt oder medial bereits aufgegriffen wurden.<br><br>#bittefolgen<br>#rechtsranfahren<br>#einszweipolizei<br>#ichhabpolizei<br>#HugThePolice<br>#staybehindfoundation<br><br>FB: @staybehindfoundation<br>TW: @StayBehindFd<br><br>Datenquellen: @tagesschau, @DER SPIEGEL, @Belltower.News, @rbb Fernsehen, @MDR - Mitteldeutscher Rundfunk, @taz, @RND, @Tagesspiegel uva.<br>]]></description>
+    <Style id="icon-1899-DB4436-labelson">
+      <IconStyle>
+        <color>ff3644db</color>
+        <scale>1</scale>
+        <Icon>
+          <href>https://www.gstatic.com/mapspro/images/stock/503-wht-blank_maps.png</href>
+        </Icon>
+        <hotSpot x="32" xunits="pixels" y="64" yunits="insetPixels"/>
+      </IconStyle>
+    </Style>
+    <Folder>
+      <name>Einzelfälle</name>
+      <Placemark>
+        <name>Polizei NRW
+</name>
+        <description><![CDATA[Wann & Was: <br>September 2020, rassistische Chatgruppe "Alphateam"<br>Wieviele:<br>29 Gruppenmitglieder]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            7.6615938,51.4332367,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizei Frankfurt am Main
+</name>
+        <description><![CDATA[Wann: <br>Februar 2020<br><br>Was:<br>Rassistische Chatgruppe. Hausdurchsuchung bei drei Polizist:innen. ]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            8.6821267,50.1109221,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeiinterne Chatgruppe in Berlin
+</name>
+        <description><![CDATA[Wann:<br>2020<br><br>Was:<br>Polizeiinterne Chatgruppe mit rechtsextremen Inhalten. (tagesspiegel)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            13.404954,52.5200066,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizei-Hochschule Rothenburg
+</name>
+        <description><![CDATA[Wann: <br>Februar 2020<br><br>Was:<br>Gegen drei Polizeianwärter (zwei davon sind 18, einer 22) der Polizei-Hochschule in Rothenburg (Sachsen) wird unter anderem wegen der Verwendung von Kennzeichen verfassungsfeindlicher Organisationen ermittelt. Laut einer Anfrage der Linken-Landtagsabgeordneten Kerstin Köditz wurden seit 2015 16 Polizeibeamt*innen aus Sachsen in 17 Fällen wegen Rechtsextremismus verdächtigt. Acht registrierte Fälle gab es demnach in der Polizeidirektion Leipzig, je drei Fälle im in der Polizeidirektion Dresden und im Präsidium der Bereitschaftspolizei. Disziplinarverfahren wurden in 14 von 17 Fällen eingeleitet, außerdem neun Ermittlungsverfahren. Mindestens zwei der Betroffenen wurden aus dem Beamtenverhältnis entlassen (vgl. mdr)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            14.9665252,51.3357091,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeipräsidium Hamm</name>
+        <description><![CDATA[Wann: <br>Februar 2020<br><br>Was:<br>Die rechte Terrorzelle „Gruppe S.“, die Anschläge auf Politiker, Asylbewerber und Muslime geplant haben soll, wird ausgehoben. Einer der Verdächtigen ist Torsten W., ein Polizei-Mitarbeiter aus Hamm. Er soll die „Gruppe S.“ finanziell unterstützt haben und bei Plan-Treffen zur Beschaffung von Waffen dabei gewesen sein. Er sitzt in Untersuchungshaft. Trotz Reichsbürger-Stickern und Thor-Steinar-Pullis konnte der Verwaltungsbeamte jahrelang bei im Polizeipräsidium Hamm arbeiten. Recherchen von WDR und SZ soll er außerdem auf vertrauliche, dienstliche Erkenntnisse zur Reichsbürgerszene zugegriffen haben (vgl. Tagesschau).]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            7.8159817,51.6738583,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizei Aachen</name>
+        <description><![CDATA[Wann:<br>Februar 2020<br><br>Was:<br>Die Polizei Aachen leitet ein Disziplinarverfahren gegen zwei Polizeibeamte ein. Einer von ihnen soll ausgerechnet vor der Aachener Synagoge eine US-Serie auf dem Handy angesehen haben, in der „Heil Hitler“ und „Viertes Reich“ zu hören waren. Auf dem Privathandy fanden sich weitere rassistische und rechtsextremistische Videos und Audios. (vgl. Spiegel)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            6.0838868,50.7753455,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizei Hamm</name>
+        <description><![CDATA[Wann:<br>März 2020<br><br>Was:<br>Ein Polizeibeamter aus Hamm wird wegen des Verdachts auf Volksverhetzung suspendiert. Dabei handelt es sich um Julius H., den ehemaligen Sprecher der AfD in Hamm. (Vgl. WDR und Westfälischer Anzeiger).]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            7.8159817,51.6738583,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeicomputer in Wiesbaden</name>
+        <description><![CDATA[Wann:<br>Juli 2020<br><br>Was:<br>Auf Polizeicomputern in Wiesbaden und Frankfurt sollen persönliche Daten von Journalist*innen, Politiker*innen und Kabarettist*innen abgefragt worden sein, die später Drohschreiben mit der Unterschrift „NSU 2.0“ bekamen. Mehrere Polizisten wurden vom Dienst suspendiert, wer hinter den Schreiben steckt, ist unklar. Auch in Hamburg und Berlin soll es verdächtige Abfragen gegeben haben. (Vgl. WDR)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            8.2397608,50.0782184,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeicomputer Frankfurt am Main</name>
+        <description><![CDATA[Wann:<br>Juli 2020<br><br>Was:<br>Auf Polizeicomputern in Wiesbaden und Frankfurt sollen persönliche Daten von Journalist*innen, Politiker*innen und Kabarettist*innen abgefragt worden sein, die später Drohschreiben mit der Unterschrift „NSU 2.0“ bekamen. Mehrere Polizisten wurden vom Dienst suspendiert, wer hinter den Schreiben steckt, ist unklar. Auch in Hamburg und Berlin soll es verdächtige Abfragen gegeben haben. (Vgl. WDR)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            8.6821267,50.1109221,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Der Vorsitzende der Deutschen Polizeigewerkschaft (DPolG) in Berlin</name>
+        <description><![CDATA[Wann:<br>Juli 2020<br><br>Was:<br>Der Vorsitzende der Deutschen Polizeigewerkschaft (DPolG) in Berlin Bodo Pfalzgraf soll laut Recherchen der taz in den 1990er Jahren umfassend in der rechtsextremen Szene vernetzt und Gründungsmitglied des „Hoffmann-von-Fallersleben Bildungswerks“ gewesen sein – laut Verfassungsschutz „eine Tarnorganisation für Veranstaltungen von Rechtsextremisten und Neonationalsozialisten“. Seine Mitgliedschaft und Kandidatur bei den Republikanern war bereits früher bekannt geworden. (vgl. taz und BTN)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            13.404954,52.5200066,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeicomputer in Potsdam</name>
+        <description><![CDATA[Wann:<br>Juli 2020<br><br>Was:<br>Wegen Datenabfrage ohne dienstlichen Bezug im Potsdamer Polizeipräsidium wird gegen zwei Polizisten ermittelt. Beide Beamte waren Mitglieder beim Verein „Uniter“, der Teil des rechtsextremen „Hannibal“-Netzwerks ist. Die Datenabfragen bezogen sich teilweise auf Gründer von „Uniter“. (vgl. Redaktionsnetzwerk Deutschland)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            13.0644729,52.3905689,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeibeamter aus Berlin
+</name>
+        <description><![CDATA[Wann:<br>August 2020<br><br>Was:<br>Schon seit Januar steht Stefan K. in Berlin vor Gericht. Der Polizeibeamte soll sich an einem rassistisch motivierten Übergriff mehrerer Fußballfans auf einen 26 Jahre alten Afghanen beteiligt haben. Der Beamte soll zusätzlich die Ermittlungen in dem Fall beeinflusst haben. Im August stellt sich heraus: Stefan K. war Mitglied der Ermittlungsgruppe Rechtsextremismus (EG Rex), die 2016 aufgelöst wurde und K. war womöglich in die Ermittlungen zur mutmaßlich rechtsextremen Neuköllner Anschlagsserie involviert. (Vgl. Tagesspiegel)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            13.4445071,52.4407709,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeibeamter ausThüringen</name>
+        <description><![CDATA[Wann:<br>August 2020<br><br>Was:<br>Ein Thüringer Polizist steht in Verdacht, eine Straftat mit rechtsextremen Bezug begangenen zu haben. Es geht um das Verwenden verfassungsfeindlicher Symbole. Intern wird schon ermittelt. (vgl. Thüringer Allgemeine)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            10.845346,51.0109892,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeibeamter aus Hessen</name>
+        <description><![CDATA[Wann:<br>September 2020<br><br>Was:<br>Die taz veröffentlicht weitere Recherchen zum Komplex „NSU 2.0“. Demnach führt eine Spur zu einem hessischen Polizisten: Johannes S. (vgl. taz)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            9.1624376,50.6520515,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeihochschule Brandenburg</name>
+        <description><![CDATA[Wann:<br>September 2020<br><br>Was:<br>Ein Polizeischüler der Polizeihochschule Brandenburg wurde nach rechtsextremen Äußerungen entlassen. Am 14. September 2020 wurde bekannt, dass einem Antrag des Mannes gegen seine Entlassung vor dem Verwaltungsgericht Potsdam Recht gegeben worden war. Der 26-Jährige sollte während einer Übung einem Namen mit Funkalphabet buchstabieren und benutzte dafür die Worte „Jude, Untermensch, Nazi, Gaskammer“ und alternativ „Genozid“. Jetzt hat die Polizeihochschule in Oranienburg Beschwerde gegen die Entscheidung des Verwaltungsgerichts eingelegt. (vgl. rbb)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            13.2162494,52.1313922,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeibeamt:innen in Duisburg</name>
+        <description><![CDATA[Wann:<br>September 2020<br><br>Was:<br>Razzia der Soko „Parabel“ bei 29 (später wird die Zahl auf 30 korrigiert) Kolleg*innen. Durchsucht werden Wohnungen und Dienststellen in Duisburg, Essen, Mülheim an der Ruhr, Oberhausen, Moers und Selm (vgl. Spiegel). Die Beamt*innen sollen in privaten WhatsApp-Gruppen über Jahre rechtsextreme Propaganda inklusive Hitlerbildchen ausgetauscht haben.]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            6.7623293,51.4344079,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeibeamt:innen in Essen</name>
+        <description><![CDATA[Wann:<br>September 2020<br><br>Was:<br>Razzia der Soko „Parabel“ bei 29 (später wird die Zahl auf 30 korrigiert) Kolleg*innen. Durchsucht werden Wohnungen und Dienststellen in Duisburg, Essen, Mülheim an der Ruhr, Oberhausen, Moers und Selm (vgl. Spiegel). Die Beamt*innen sollen in privaten WhatsApp-Gruppen über Jahre rechtsextreme Propaganda inklusive Hitlerbildchen ausgetauscht haben.]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            7.0115552,51.4556432,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeibeamt:innen in Mülheim an der Ruhr</name>
+        <description><![CDATA[Wann:<br>September 2020<br><br>Was:<br>Razzia der Soko „Parabel“ bei 29 (später wird die Zahl auf 30 korrigiert) Kolleg*innen. Durchsucht werden Wohnungen und Dienststellen in Duisburg, Essen, Mülheim an der Ruhr, Oberhausen, Moers und Selm (vgl. Spiegel). Die Beamt*innen sollen in privaten WhatsApp-Gruppen über Jahre rechtsextreme Propaganda inklusive Hitlerbildchen ausgetauscht haben.]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            6.8845226,51.4185682,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeibeamt:innen in Oberhausen</name>
+        <description><![CDATA[Wann:<br>September 2020<br><br>Was:<br>Razzia der Soko „Parabel“ bei 29 (später wird die Zahl auf 30 korrigiert) Kolleg*innen. Durchsucht werden Wohnungen und Dienststellen in Duisburg, Essen, Mülheim an der Ruhr, Oberhausen, Moers und Selm (vgl. Spiegel). Die Beamt*innen sollen in privaten WhatsApp-Gruppen über Jahre rechtsextreme Propaganda inklusive Hitlerbildchen ausgetauscht haben.]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            6.8637765,51.4963341,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeibeamt:innen in Moers</name>
+        <description><![CDATA[Wann:<br>September 2020<br><br>Was:<br>Razzia der Soko „Parabel“ bei 29 (später wird die Zahl auf 30 korrigiert) Kolleg*innen. Durchsucht werden Wohnungen und Dienststellen in Duisburg, Essen, Mülheim an der Ruhr, Oberhausen, Moers und Selm (vgl. Spiegel). Die Beamt*innen sollen in privaten WhatsApp-Gruppen über Jahre rechtsextreme Propaganda inklusive Hitlerbildchen ausgetauscht haben.]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            6.6408148,51.4516041,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeibeamt:innen in Selm</name>
+        <description><![CDATA[Wann:<br>September 2020<br><br>Was:<br>Razzia der Soko „Parabel“ bei 29 (später wird die Zahl auf 30 korrigiert) Kolleg*innen. Durchsucht werden Wohnungen und Dienststellen in Duisburg, Essen, Mülheim an der Ruhr, Oberhausen, Moers und Selm (vgl. Spiegel). Die Beamt*innen sollen in privaten WhatsApp-Gruppen über Jahre rechtsextreme Propaganda inklusive Hitlerbildchen ausgetauscht haben.]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            7.467609,51.6957181,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ehemalige Polizeibeamt:innen aus Deutschland</name>
+        <description><![CDATA[Wann:<br>September 2020<br><br>Was:<br>Am 17.09. veröffentlicht der Spiegel eine Recherche über eine private Sicherheitsfirma in Bagdad, für die ehemalige deutsche Polizisten und Bundeswehrsoldaten arbeiten. Laut Recherchen des Magazins verherrlische das Unternehmen die NS-Zeit, einzelne Mitarbeiter hätten sich rechtsextrem geäußert (vgl. Spiegel).]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            10.451526,51.165691,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeibeamter aus Rostock</name>
+        <description><![CDATA[Wann:<br>September 2020<br><br>Was:<br>Zwei Polizisten aus Mecklenburg-Vorpommern (Rostock und Neubrandenburg) werden vom Dienst suspendiert, nachdem sie „auf ihren Privathandys antisemitische, ausländerfeindliche sowie Nazis verherrlichende Nachrichten“ verschickten (vgl. Welt). Insgesamt wird jetzt in Mecklenburg Vorpommern gegen 17 Polizeibeamte und einen Angestellten ermittelt.]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            12.0991466,54.0924406,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeibeamter aus Neubrandenburg</name>
+        <description><![CDATA[Wann:<br>September 2020<br><br>Was:<br>Zwei Polizisten aus Mecklenburg-Vorpommern (Rostock und Neubrandenburg) werden vom Dienst suspendiert, nachdem sie „auf ihren Privathandys antisemitische, ausländerfeindliche sowie Nazis verherrlichende Nachrichten“ verschickten (vgl. Welt). Insgesamt wird jetzt in Mecklenburg Vorpommern gegen 17 Polizeibeamte und einen Angestellten ermittelt.]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            13.2779269,53.5678292,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bundesamt für Verfassungsschutz</name>
+        <description><![CDATA[Wann:<br>September 2020<br><br>Was:<br>Es wird bekannt, dass einer der Personenschützer von Verfassungsschutzchef Thomas Haldenwang Mitglied der rechtsradikalen und paramilitärischen Vereinigung „Uniter“ ist. Das Bundesinnenministerium spricht von einer „schweren Panne“. (vgl. Focus)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            6.8913901,51.01992,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizei Berlin</name>
+        <description><![CDATA[Wann:<br>Oktober 2020<br><br>Was:<br>Journalistische Recherchen decken eine rechtsextreme und rassistische Chatgruppe in der Polizei Berlin auf: 25 Polizisten vernetzten sich hier über mindestens drei Jahre, setzen hier Muslime und Migranten mit Ungeziefer und Ratten gleich, wünschen sich als „Gesinnungstest“ zur Aufnahme bei der Polizei: „Erschießen Sie sechs illegale Einwanderer“. Ein Teilnehmer informierte einen Vorgesetzten, der angab, er wolle nicht wissen, was in der Gruppe geteilt werde. Danach forderte er die Beamten lediglich aufforderte, keine strafrechtlich relevanten Inhalte zu verschicken (vgl. Tagesschau).]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            13.404954,52.5200066,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Verfassungsschutz NRW </name>
+        <description><![CDATA[Wann:<br>Oktober 2020<br><br>Was:<br>Auch der Verfassungsschutz NRW hat Chatgruppen mit rassistischer Hetze, hier geht es aber „nur“ um vier Mitarbeitende, davon drei aus dem Observationsteam, das sich mit rechtsextremismus befasst, und eine „Verwaltungssachbearbeiter/in in der Polizeiabteilung„. Im Chat wurden islamfeindliche Videos geteilt, die vierte Person war zudem privat bei Facebook mit Rechtsextremen befreundet. Das „Observationsteam“ wurde aufgelöst, Disziplinarmaßnahmen seien eingeleitet (vgl. Tagesschau).]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            6.7770123,51.2132444,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizei Baden-Württemberg</name>
+        <description><![CDATA[Wann:<br>2016-2020<br><br>Was: <br>155 Beschwerden in Zusammenhang mit „Diskriminierung durch die Polizei“ in fünf Jahren. Vier Fünftel der Fälle wurden mit dem Vermerk "Verdacht nicht bestätigt" abgeheftet. ]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            9.3501336,48.6616037,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeischüler der Hochschule für Polizei Baden-Württemberg</name>
+        <description><![CDATA[Wann:<br>September 2019<br><br>Was:<br>Sieben Polizeischüler wurden entlassen, weil sie in einem Chat nationalsozialistische Inhalte geteilt hatten. (Spiegel)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            8.4640869,48.0594021,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeianwärter Bayern</name>
+        <description><![CDATA[Wann:<br>Dezember 2019<br><br>Was:<br> Polizeianwärter zeigt Hitlergruß auf dem Weihnachtsmarkt (nordbayern.de)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            10.9027636,49.8988135,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>6 Polizist:innen, darunter Polizeioberkommissar aus Augsburg</name>
+        <description><![CDATA[Wann:<br>September 2016<br><br>Was:<br>Polizeioberkommissar drückt einem Senegalesen einen angebissenen Hamburger an die Schläfe, ruft „Black man, go home“ und verpasst ihm einen Faustschlag ins Gesicht. Ein Kollege attackiert und beleidigt den Senegalesen ebenfalls. Der Rest schaut zu und kann sich an nicht erinnern (merkur.de)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            10.89779,48.3705449,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeibeamter in Eichstätt</name>
+        <description><![CDATA[Wann:<br>2016<br><br>Was:<br>Polizeibeamter verschickt per Handy rechtsradikale Nachrichten (sueddeutsche.de)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            11.1899861,48.8912508,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>17 Beamte und ein Tarifangestellter der Landespolizei Mecklenburg-Vorpommern</name>
+        <description><![CDATA[Wann:<br>2017-2020<br><br>Was:<br> 17 Beamte und ein Tarifangestellter der Landespolizei Mecklenburg-Vorpommern stehen im Verdacht, rechtsextremes Gedankengut in Internet-Chats ausgetauscht zu haben. (zdf)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            12.4295953,53.6126505,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeibeamte in Niedersachsen</name>
+        <description><![CDATA[Wann:<br>2018-2020<br><br>Was:<br>Knapp 20 Ermittlungsverfahren wegen Rechtsextremismus- beziehungsweise Rassismusverdachts eingeleitet. (NDR)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            9.8450766,52.6367036,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeibeamter in Osnabrück</name>
+        <description><![CDATA[Wann:<br>2018<br><br>Was:<br>Betrunkener Polizeibeamter malt seiner schlafenden Partnerin mit Lippenstift ein Hakenkreuz auf die Stirn stellt dieses Foto in eine Chatgruppe. (NDR)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            8.0471788,52.2799112,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>68 Verfahren gegen Polizeibeamte in Niedersachsen</name>
+        <description><![CDATA[Wann:<br>2018-2020<br><br>Was:<br>Im o.g. Zeitraum wurden 54 Ordnungswidrigkeitsverfahren und 14 Strafverfahren eingeleitet, weil Beamte unberechtigt Daten abgefragt haben sollen. (NDR)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            9.8450766,52.6367036,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeibeamter in Hannover</name>
+        <description><![CDATA[Wann:<br>2019<br><br>Was:<br>Polizeibeamter hat in einem Ermittlungsverfahren personenbezogene Daten fotografiert und per WhatsApp verschickt. Weil er rechtsradikale Bilder verschickt haben soll, sei er ursprünglich ins Visier geraten. (Bild) ]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            9.7320104,52.3758916,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kommissaranwärter Niedersachsen</name>
+        <description><![CDATA[Wann: <br>2018<br><br>Was:<br>Kommissaranwärter zeigt an der Polizeiakademie den Hitlergruß und ruft „Endlich kann ich meinen rechten Arm wieder heben“. (Bild)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            9.8450766,52.6367036,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>3 Polizeibeamt:innen in Bremen</name>
+        <description><![CDATA[Wann:<br>2020<br><br>Was:<br>In einer Facebook-Kommentarspalte äußerte sich ein Polizist gemeinsam mit seinen zwei Kolleg:innen gegenüber Tatverdächtigen als auch gegenüber unbeteiligten Dritten in diskriminierender, abfälliger und zynischer Art und Weise. (nordbuzz.de)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            8.8016936,53.0792962,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeibeamter in Schleswig-Holstein</name>
+        <description><![CDATA[Wann:<br>2020<br><br>Was:<br>Gegen einen Polizisten wird strafrechtlich ermittelt "wegen Verdachts der Nähe zum Reichsbürgertum". (merkur.de)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            9.6961167,54.2193672,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>LKA/SEK Beamter aus Banzkow</name>
+        <description><![CDATA[Wann:<br>Januar 2016<br><br>Was:<br>Langjähriger LKA und SEK-Beamter und Präzisionsschütze gründet die Telegram-Chatgruppen „NORD KREUZ“ und „NORD Com“<br>Bei Durchsuchungen fand man Gewehre, Pistolen, Messer, Blendgranaten, Schlagstöcke und über 50.000 Schuss Munition. (deutschlandfunk)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            11.5257187,53.5271387,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Netzwerk mit zahlreichen Polizeibeamt:innen in Mecklenburg-Vorpommern</name>
+        <description><![CDATA[Wann:<br>Anfang 2016, immer noch aktiv<br><br>Zusammenschluss einer Gruppe mit dem Namen "Nordkreuz" von bis zu 54 rechtsextremen deutschen Preppern, darunter viele Polizeibeamte, Juristen und Bundeswehrsoldaten, die sich auf einen erwarteten Staatszusammenbruch am „Tag X“ vorbereiten und eine Massentötung von politischen Gegner geplant haben sollen. Hierfür wollten sie rund 200 Leichensäcke und Ätzkalk bestellen. <br>Sie ist mit "Südkreuz", "Westkreuz" und ähnlichen Gruppen Teil des rechtsextremen Hannibal-Netzwerks. (deutschlandfunk, wikipedia)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            12.4295953,53.6126505,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>2 Polizeibeamte in Baden-Württemberg</name>
+        <description><![CDATA[Wann:<br>Erste HJ 2020<br><br>Was:<br>Zwei Polizeibeamte wurden wegenrechtsextremistischen, antisemitischen beziehungsweise islamkritischen Äußerungen suspendiert. Einer der Beschuldigten wurde strafrechtlich verurteilt. (merkur)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            9.3501336,48.6616037,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeibeamter in Thüringen</name>
+        <description><![CDATA[Wann:<br>Erstes HJ 2020<br><br>Was:<br>Gegen einen Polizeibeamten laufen strafrechtliche Ermittlungen wegen rechtsextremistischer Umtriebe. Ihm wird die Verwendung von Kennzeichen verfassungswidriger Organisationen vorgeworfen. (merkur)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            10.845346,51.0109892,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>3 Beamte der Bundespolizei </name>
+        <description><![CDATA[Wann:<br>Erstes HJ 2020<br><br>Was:<br>Drei Beamte stehen unter Rechtsextremismusverdacht. In zwei Fällen wurde ein Verbot der Führung der Dienstgeschäfte verhängt, im dritten ist ein Strafverfahren anhängig. (merkur)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            10.451526,51.165691,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>8 Polizeibeamt:innen in Sachsen-Anhalt</name>
+        <description><![CDATA[Wann:<br>2019/2020<br><br>Was:<br>Acht Polizisten stehen unter Extremismusverdacht- Rechtsextremismus, Antisemitismus und Rassismus. In allen Fällen seien laut Innenministerium neben einem Disziplinarverfahren auch strafrechtliche Ermittlungen eingeleitet worden. (merkur)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            11.6922734,51.9502649,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>6 Polizeibeamt:innen in Sachsen</name>
+        <description><![CDATA[Wann:<br>Erstes HJ 2020<br><br>Was:<br>Sechs rechtsextremistische Verdachtsfälle. Gegen drei Beamte wurden laut Innenministerium Disziplinarverfahren eröffnet, die noch laufen. Gegen vier Beamte wurden strafrechtliche Ermittlungen eingeleitet, drei der Polizisten wurden aus dem Beamtenverhältnis entlassen. (merkur)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            13.2017384,51.1045407,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>4 Polizeibeamt:innen in Bayern</name>
+        <description><![CDATA[Wann:<br>2018<br><br>Was:<br>Ein Fall der Verwendung von verfassungsfeindlichen Symbolen, einen von Beleidigung, und zwei Fälle von Volksverhetzung durch Polizeibeamt:innen. (deutschlandfunk)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            11.4978895,48.7904472,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>35 Polizeibeamt:innen in Bayern</name>
+        <description><![CDATA[Wann:<br>2019<br><br>Was:<br>Verbreitung antisemitischer und rechtsextremistischer Videos in einer Chatgruppe von rund 35 Polizeibeamt:innen. (deutschlandfunk)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            11.4978895,48.7904472,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>15 rechtsextreme Vorfälle in Rheinland-Pfalz</name>
+        <description><![CDATA[Wann:<br>2016-heute<br><br>Was:<br>Das Innenministerium Rheinland-Pfalz zählt 15 rechtsextreme Vorfälle bei der Polizei seit 2016. Alle wurden an die zuständige Staatsanwaltschaft übermittelt: „In keinem Fall kam es zu einer Anklage. In zwölf Fällen wurden Disziplinarverfahren eingeleitet, welche mit einer Einstellung, teilweise in Verbindung mit einer Missbilligung, endeten oder mit der Verhängung von Verweisen oder Geldbußen.“ Ein Beamter wurde entlassen. Einige Verfahren dauern noch an. (deutschlandfunk)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            7.3089527,50.118346,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name><![CDATA["Einzelfälle" in der Polizeihochschule in Bremen]]></name>
+        <description><![CDATA[Wann:<br>"In der Vergangenheit"<br><br>Was:<br>Das Land Bremen hat  – Zitat – „Einzelfälle von angeblichem Rassismus“ an seiner Hochschule für Öffentliche Verwaltung registriert. (deutschlandfunk)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            8.8016936,53.0792962,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>23 Verdachtsfälle unter Polizeibeamt:innen in Schleswig Holstein</name>
+        <description><![CDATA[Wann:<br>2014-heute<br><br>Was:<br>Aus Kiel kommt die Nachricht: „Seit dem Jahr 2014 gab es 23 Verdachtsfälle für den Bereich der Beamtenschaft der Landespolizei Schleswig-Holstein.“]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            10.1227651,54.3232927,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kriminalkommisar in Saarbrücken</name>
+        <description><![CDATA[Wann:<br>Juni 2016<br><br>Was:<br>Strafbefehl gegen einen Kriminalkommissar wegen Volksverhetzung. In einem öffentlichen Beitrag auf Facebook stellte dieser unter anderem den Holocaust infrage. (welt) ]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            6.9969327,49.2401572,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizist:innen aus OWL</name>
+        <description><![CDATA[Wann:<br>Oktober 2020<br><br>Was:<br>Die Polizei hat die Wohnung und das Büro eines Bielefelder Hauptkommissars durchsucht. Auch im Kreis Lippe und in Paderborn wird wegen rechtsextremer Umtriebe gegen Polizisten ermittelt. Dem Polizeihauptkommissar wird vorgeworfen, mindestens zwei Bilder mit rechtsextremistischen Symbolen in einer privaten Chatgruppe gepostet zu haben. (wdr)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            8.659252,52.0580027,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizei Berlin
+</name>
+        <description><![CDATA[Wann: <br>Februar 2020<br><br>Was:<br>Ein 29-Jähriger Polizist aus Berlin soll laut RBB eine Chat-Nachricht mit „rechtsextremem Inhalt“ versendet haben. Gegen den Beamten wurde ein Ermittlungsverfahren eingeleitet. Der Mann war aus Hessen nach Berlin gewechselt. Am 7.Februar wurde seine Wohnung wegen des Verdachts der Volksverhetzung und der Verwendung Kennzeichen verfassungswidriger Organisationen durchsucht. Er soll „Wortführer“ einer WhatsApp-Gruppe gewesen sein, in der gewaltverherrlichende und rechtsextreme Inhalte ausgetauscht wurden.]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            13.404954,52.5200066,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Toter Geflüchteter in Gewahrsam in Schweinfurt</name>
+        <description><![CDATA[Wann:<br>26. Februar 2019 <br><br>Was:<br>Ein 22-Jähriger somalischer Geflüchteter wird von einem Ankerzentrum in Schweinfurt auf die Polizeiwache geführt. Er widersetzte sich seiner Verhaftung nicht. Wenige Stunden später, wurde er tot in seiner Zelle aufgefunden. Die Polizei spricht von Suizid. Zu den genaueren Umständen, herrschen allerdings Unklarheiten. (Frankfurter Rundschau)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            10.2194228,50.0492047,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Syrer verbrennt in U-Haft in Kleve</name>
+        <description><![CDATA[Wann:<br>September 2018 <br><br>Was:<br>Syrer stirbt nach mehreren Wochen Untersuchungshaft an Brandverletzungen in seiner Gewahrsamszelle, er soll die Zelle selbst in Brand gesetzt haben, doch die offiziellen Gutachten werfen Fragen auf. Unter anderem, warum es so lange dauerte, bis das Personal der JVA Kleve reagierte. Noch vor seinem Tod war klar, dass er unschuldig verhaftet wurde, die Polizei in Kleve wusste dies. Doch die Ermittlungen in diesem Fall wurden 2019 eingestellt. (Frankfurter Rundschau)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            6.12954,51.786726,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Untersuchungshaft für 1,65 Gramm Marihuana in Hamburg</name>
+        <description><![CDATA[Wann:<br>Januar 2016<br> <br>Was: <br>Ein 21 Jähriger Geflüchteter wird in Hamburg St. Pauli festgenommen, nachdem die Polizei bei ihm 1,65 Gramm Marihuana fand. Bei derart geringen Mengen wird in der Regel von strafrechtlicher Verfolgung abgesehen. Dennoch musste er für einen Monat in Untersuchungshaft. Er nahm sich in der Haftanstalt das Leben. (Frankfurter Rundschau)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            9.9936818,53.5510846,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Vier Polizeibeamte erschießen Familienvater in Berlin</name>
+        <description><![CDATA[Wann:<br>27. September 2016<br><br>Was:<br>Ein Iraker lebte mit seiner Frau und drei Kindern in einer Berliner Flüchtlingsunterkunft. Als die Polizei dort einen Mann verhaftetet, der die sechsjährige Tochter des Irakers sexuell missbraucht haben soll, lief dieser in Aufregung auf den Wagen zu, in welchem der Verdächtige  saß. Die drei anwesenden Polizeibeamten feuerten insgesamt vier Schüsse. Kurz darauf starb er im Krankenhaus. (Frankfurter Rundschau)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            13.404954,52.5200066,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizei statt Krankenhaus in Dortmund</name>
+        <description><![CDATA[Wann:<br> 7. Juli 2012 <br><br>Was:<br>Ein Mann aus Gambia rief einen Krankenwagen, weil er sich schlecht fühlte. Die Sanitäter stellten bei ihm Herzrasen fest, ein Fall fürs Krankenhaus sei er aber nicht. Eine halbe Stunde später rief er, inzwischen mit Krämpfen, erneut die Sanitäter. Sein Zustand hat ihn aggressiv gemacht. Er zerschlug in der Wohnung eine Scheibe. Die Polizei traf zeitgleich mit den Sanitätern ein. Diese stellten erneut fest, dass er kein Fall fürs Krankenhaus sei. Eine Krankenschwester widersprach. Dennoch führten die Polizeibeamten den 45-Jährigen in Handschellen ab. Auf der Wache brach er zusammen und starb kurz darauf auf dem Weg ins Krankenhaus. (Frankfurter Rundschau)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            7.4652981,51.5135872,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Toter in Gewahrsam in Dessau</name>
+        <description><![CDATA[Wann:<br> Januar 2005 <br><br>Was:<br>Ein Asylsuchender aus Sierra Leone, wurde von der Polizei mit fixierten Händen und Füßen in eine Gewahrsamszelle in Dessau gebracht. Zwei Stunden später war er in der Zelle verbrannt.  (Frankfurter Rundschau)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            12.2423302,51.8308166,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Landeskriminalamt Sachsen – Survivor R
+</name>
+        <description><![CDATA[<img src="https://doc-00-28-mymaps.googleusercontent.com/untrusted/hostedimage/l6g5ndp3jkqtbhkj1l07plc9fc/qs17d20medmkhs4tu0igv7onqs/1665995400000/gsTR7wE2qKgNS62tlVPd4XjkHbC-NtRa/*/6AKgB-9ngrQwR_DIkpvm6Nbiw3EptsCZb6Qg6libQgcXZ6Dszt9oolDA4RzKEgIhushdLeuPzycLMlOv1-xc0CFmIhrwuzgSImeQoTcnrKX2iN7YRnYxOqANYZg1UUUuYlSrcpt6X6OcbY1jsZx9GIFaNRsZ6kHEELQmQUp1t1b-Z2J-1DFiKikgfxrF8zSLyIrJb0P5r?fife" height="200" width="auto" /><br><br>Wann: <br>Dezember 2017<br><br>Was:<br>Ein Wappen, drumherum Zweige, stilisierte Adlerschwingen und zwei Schriftzüge in einer historischen Schriftart: So sieht das Logo aus, das der Rüstungskonzern Rheinmetall auf die Sitze eines neuen Polizeipanzers sticken ließ. Die Stickereien in dem Spezialfahrzeug haben eine Debatte ausgelöst - über den Umgang der Sicherheitsbehörden mit der NS-Vergangenheit und mangelnde Sensibilität bei diesem Thema.<br><br>Eigentümer des Spezialfahrzeugs mit dem Namen "Survivor R" ist der Freistaat Sachsen. Das zuständige Innenministerium und das Landeskriminalamt stehen nun wegen des fraglichen Logos in der Kritik, erinnert es doch stark an die Ästhetik des Nationalsozialismus.]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="gx_media_links">
+            <value>https://doc-00-28-mymaps.googleusercontent.com/untrusted/hostedimage/l6g5ndp3jkqtbhkj1l07plc9fc/qs17d20medmkhs4tu0igv7onqs/1665995400000/gsTR7wE2qKgNS62tlVPd4XjkHbC-NtRa/*/6AKgB-9ngrQwR_DIkpvm6Nbiw3EptsCZb6Qg6libQgcXZ6Dszt9oolDA4RzKEgIhushdLeuPzycLMlOv1-xc0CFmIhrwuzgSImeQoTcnrKX2iN7YRnYxOqANYZg1UUUuYlSrcpt6X6OcbY1jsZx9GIFaNRsZ6kHEELQmQUp1t1b-Z2J-1DFiKikgfxrF8zSLyIrJb0P5r?fife</value>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            13.7077081,51.0978799,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>31. Einsatzhundertschaft Berlin
+</name>
+        <description><![CDATA[<img src="https://doc-0g-28-mymaps.googleusercontent.com/untrusted/hostedimage/l6g5ndp3jkqtbhkj1l07plc9fc/39so1bj1cfs3qiekdp1e7mael4/1665995400000/gsTR7wE2qKgNS62tlVPd4XjkHbC-NtRa/*/6AKgB-9kTKNVm1hP7W4JV0Hwg3WQO50hTJPToegfrTbmePzwpmObec1iicRCRMfOG4kvi8PI6LLwjiRfJr2aqtU8MRKRlGhfONphSKZKASs8PP6Kyd7d8XF1b1GHOlafrpv5ETmfBwYy9NczS1mhNEOErhLQjiRXGMFOYtAhHKvBkvB7-9iYEHWnloZ_oiuJsBHaph6E?fife" height="200" width="auto" /><br><br>Wann:<br>Oktober 2020<br><br>Was:<br>Symbol der Identitären Bewergung und altdeutsche Schrift auf Abzeichen.]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="gx_media_links">
+            <value>https://doc-0g-28-mymaps.googleusercontent.com/untrusted/hostedimage/l6g5ndp3jkqtbhkj1l07plc9fc/39so1bj1cfs3qiekdp1e7mael4/1665995400000/gsTR7wE2qKgNS62tlVPd4XjkHbC-NtRa/*/6AKgB-9kTKNVm1hP7W4JV0Hwg3WQO50hTJPToegfrTbmePzwpmObec1iicRCRMfOG4kvi8PI6LLwjiRfJr2aqtU8MRKRlGhfONphSKZKASs8PP6Kyd7d8XF1b1GHOlafrpv5ETmfBwYy9NczS1mhNEOErhLQjiRXGMFOYtAhHKvBkvB7-9iYEHWnloZ_oiuJsBHaph6E?fife</value>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            13.404954,52.5200066,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Einsatzfahrzeug Jena
+</name>
+        <description><![CDATA[<img src="https://doc-08-28-mymaps.googleusercontent.com/untrusted/hostedimage/l6g5ndp3jkqtbhkj1l07plc9fc/f6cle45bjpfog73u9ocltq9dk0/1665995400000/gsTR7wE2qKgNS62tlVPd4XjkHbC-NtRa/*/6AKgB-9noN5Sm-0udI1SRZRfMKC4EHnYqlLztpE2JtxRIbPY0gvzgAcxTQVl4s1P5xDVqDLc-7zy7ld48gzZliqVDchh_S_S-z45Zvrx5M9MvCUlxfqQ6dAQYc17FeTI8FySXh_ePoiCNr5463Fb_p4yr5o--3_Q8ungoiC2IUm84rrhZ9wl-YUddqC-oilnjPqrLeja-?fife" height="200" width="auto" /><br><br>Wann:<br>Januar 2019<br><br>Was:<br>Bei einer AfD-Kundgebung klemmt die rechtsradikale Zeitschrift "Compact" hinter der Windschutzscheibe eines Polizeiwagens. Der Vorfall löst eine Debatte aus, zwei verantwortliche Polizisten werden versetzt.<br><br>Das Ablegen einer rechtsextremen Zeitschrift hinter der Windschutzscheibe eines Polizei-Einsatzwagens hat Konsequenzen für zwei Erfurter Bereitschaftspolizisten. Sie seien mit sofortiger Wirkung in eine andere Dienststelle versetzt worden, sagte ein Sprecher der Landeseinsatzzentrale am Donnerstag auf Anfrage. Nach seinen Angaben wurde ein Disziplinarverfahren eingeleitet. (Frankfurter Rundschau)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="gx_media_links">
+            <value>https://doc-08-28-mymaps.googleusercontent.com/untrusted/hostedimage/l6g5ndp3jkqtbhkj1l07plc9fc/f6cle45bjpfog73u9ocltq9dk0/1665995400000/gsTR7wE2qKgNS62tlVPd4XjkHbC-NtRa/*/6AKgB-9noN5Sm-0udI1SRZRfMKC4EHnYqlLztpE2JtxRIbPY0gvzgAcxTQVl4s1P5xDVqDLc-7zy7ld48gzZliqVDchh_S_S-z45Zvrx5M9MvCUlxfqQ6dAQYc17FeTI8FySXh_ePoiCNr5463Fb_p4yr5o--3_Q8ungoiC2IUm84rrhZ9wl-YUddqC-oilnjPqrLeja-?fife</value>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            11.5892372,50.927054,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeigruppenführer Mannheim</name>
+        <description><![CDATA[<img src="https://doc-10-28-mymaps.googleusercontent.com/untrusted/hostedimage/l6g5ndp3jkqtbhkj1l07plc9fc/ks88lq1e293o1etlek7rs85fp8/1665995400000/gsTR7wE2qKgNS62tlVPd4XjkHbC-NtRa/*/6AKgB-9lTIXYcmn-LC5NM5acw1XbHkNuGE122nNfGqZDrllHZAhgWatyjX5busAftXGLodzbbDwEuSvYVYrDJu-5UOPXSw5siSkGCFis-dQxiuMavZ7ABwyjGgrTG743XitqcPPVkjgllT5264ZBhdFEKeQLmHOiRK1kND_qz_YOi1HfySMfEn_6aXSYv7xNykvPJSG-A?fife" height="200" width="auto" /><br><br>Wann:<br>September 2020<br><br>Was:<br>Ein einzelner Polizist trägt ein Abzeichen, das dem Logo der Nazi-Partei III. Weg ähnelt. Auf Nachfrage verweigerte sowohl dieser erkennbare Gruppenführer als auch der herbeigeeilte Zugführer eine Auskunft über die Bedeutung dieses Abzeichens.<br><br>Recherchen ergaben , dass es sich bei dem Abzeichen um ein kommerziell vertriebenes Dienstgruppen-Abzeichen handelt, das kein offizielles Abzeichen der Polizei ist.<br><br>Die Polizei Mannheim  bestätigte, dass dieses Abzeichen nicht an der Uniform getragen werden darf.]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="gx_media_links">
+            <value>https://doc-10-28-mymaps.googleusercontent.com/untrusted/hostedimage/l6g5ndp3jkqtbhkj1l07plc9fc/ks88lq1e293o1etlek7rs85fp8/1665995400000/gsTR7wE2qKgNS62tlVPd4XjkHbC-NtRa/*/6AKgB-9lTIXYcmn-LC5NM5acw1XbHkNuGE122nNfGqZDrllHZAhgWatyjX5busAftXGLodzbbDwEuSvYVYrDJu-5UOPXSw5siSkGCFis-dQxiuMavZ7ABwyjGgrTG743XitqcPPVkjgllT5264ZBhdFEKeQLmHOiRK1kND_qz_YOi1HfySMfEn_6aXSYv7xNykvPJSG-A?fife</value>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            8.4660395,49.4874592,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizisten in Berlin
+</name>
+        <description><![CDATA[<img src="https://doc-00-28-mymaps.googleusercontent.com/untrusted/hostedimage/l6g5ndp3jkqtbhkj1l07plc9fc/kidtqokm5312vd6l6r3u9j46r4/1665995400000/gsTR7wE2qKgNS62tlVPd4XjkHbC-NtRa/*/6AKgB-9mjSP3kMckgT8-nBlavocbmTCHnWKDF7aS2_cyoIe2wXDrX5TpCzRyemaCbAPdAsC_SZoCqlGpHpfwFXKh9VyRMFLy03x5UVEvQDtJDnV6kVAP3ONSi3CSTOcFKwRFsMAyW-DhgAEsvL0eSuLtTX7wTsJSN2w5j4BM_zIqncu6vKrUh02xLmR5kVGFNqRcXl2o?fife" height="200" width="auto" /><br><br>Wann:<br>August 2020<br><br>Was:<br>White Power-Aufkleber in Polizeihelmen.<br><br><img src="https://doc-04-28-mymaps.googleusercontent.com/untrusted/hostedimage/l6g5ndp3jkqtbhkj1l07plc9fc/8p353t053qq2fu966ibg7rpi0s/1665995400000/gsTR7wE2qKgNS62tlVPd4XjkHbC-NtRa/*/6AKgB-9kzZylDBiRLSK1MYbDX_JmwPblrKdzaVGhlvnBUrdp9Rs3HOk4wFHlF0tQzNB_1GhhBp--iJXVJZowRPaf94tLzj8hP8g5iIJ8GiqRwNFAHXcMTF28b17t0_gTZJ9fayWfwv1mNoSpBYEhZnJjnFZ0ixmrmyFmttmMBAF5A2FF8QlKaC1Cut30TxeolRRxgyU4?fife" height="200" width="auto" />]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <ExtendedData>
+          <Data name="gx_media_links">
+            <value>https://doc-00-28-mymaps.googleusercontent.com/untrusted/hostedimage/l6g5ndp3jkqtbhkj1l07plc9fc/kidtqokm5312vd6l6r3u9j46r4/1665995400000/gsTR7wE2qKgNS62tlVPd4XjkHbC-NtRa/*/6AKgB-9mjSP3kMckgT8-nBlavocbmTCHnWKDF7aS2_cyoIe2wXDrX5TpCzRyemaCbAPdAsC_SZoCqlGpHpfwFXKh9VyRMFLy03x5UVEvQDtJDnV6kVAP3ONSi3CSTOcFKwRFsMAyW-DhgAEsvL0eSuLtTX7wTsJSN2w5j4BM_zIqncu6vKrUh02xLmR5kVGFNqRcXl2o?fife https://doc-04-28-mymaps.googleusercontent.com/untrusted/hostedimage/l6g5ndp3jkqtbhkj1l07plc9fc/8p353t053qq2fu966ibg7rpi0s/1665995400000/gsTR7wE2qKgNS62tlVPd4XjkHbC-NtRa/*/6AKgB-9kzZylDBiRLSK1MYbDX_JmwPblrKdzaVGhlvnBUrdp9Rs3HOk4wFHlF0tQzNB_1GhhBp--iJXVJZowRPaf94tLzj8hP8g5iIJ8GiqRwNFAHXcMTF28b17t0_gTZJ9fayWfwv1mNoSpBYEhZnJjnFZ0ixmrmyFmttmMBAF5A2FF8QlKaC1Cut30TxeolRRxgyU4?fife</value>
+          </Data>
+        </ExtendedData>
+        <Point>
+          <coordinates>
+            13.3756895,52.5182798,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>3 Polizeianwärter in Bautzen</name>
+        <description><![CDATA[Wann:<br>Februar 2020<br><br>Was:<br>Bürger melden „Sieg Heil“-Rufe aus einer Wohnung. Die Polizei trifft dort drei Kommissarsanwärter an. Diese werden suspendiert, ermittelt wird wegen Verwendens von Kennzeichen verfassungswidriger Organisationen. (spiegel)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            14.4237749,51.182293,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>3 BKA Nachwuchskommissare in Wiesbaden</name>
+        <description><![CDATA[Wann:<br>Oktober 2019<br><br>Was:<br>Drei BKA-Nachwuchskommissare tauschen sich in einem WhatsApp-Chat über Halloween-Kostüme aus. Einer postet ein Hitler-Bild und schlägt vor, sich als der Attentäter von Halle zu verkleiden oder in Wehrmachtsuniformen mit „original Armbinden“. Einer der Männer soll entlassen werden, gegen zwei wird ein Disziplinarverfahren eingeleitet. (taz)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            8.2397608,50.0782184,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>7 Polizeischüler in Lahr/Schwarzwald</name>
+        <description><![CDATA[Wann:<br>Februar 2020<br><br>Was:<br>Sieben Polizeischüler sollen in einer Chatgruppe nationalsozialistische, antisemitische und frauenfeindliche Nachrichten ausgetauscht haben. Alle sollen wegen „erheblicher charakterlicher Mängel“ entlassen werden. (bnn)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            7.8781487,48.33915,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Neun Polizeibeamte in Cottbus</name>
+        <description><![CDATA[Wann:<br>Dezember 2019<br><br>Was:<br>Neun Beamten der in Cottbus stationierten 3. Einsatzhundertschaft der Brandenburger Bereitschaftspolizei sollen ihre Sympathie mit einer in Cottbus bekannten rechtsextremen Gruppe bekundet haben. Die Beamten sollen, als sie eine von Rechtsextremen beschmierte Wand übermalen mussten, die Initialen „DC“ und das Erkennungssymbol von „Defend Cottbus“ – ein Krebs – zurückgelassen haben. (tagesspiegel)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            14.3328679,51.7563108,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeibeamter in Niedersachsen</name>
+        <description><![CDATA[Wann:<br>Anfang 2020<br><br>Was:<br>In Niedersachsen verschickte ein Beamter verfassungsfeindliche Bilder und spielte ein Lied der Hitlerjugend ab. (taz)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            9.8450765,52.6367036,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Ein Polizeibeamter in Sachsen</name>
+        <description><![CDATA[Wann:<br>Anfang 2020<br><br>Was:<br>Ein Polizist verweigert einer Kopftuchträgerin, die eine Anzeige erstatten wollte, Zutritt zu seinem Büro. (taz)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            13.2017384,51.1045407,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeischüler in Leipzig</name>
+        <description><![CDATA[Wann:<br>Silvesternacht 2016/2017 <br><br>Was:<br>Ein Polizeischüler pstets in eine WhtasAppgruppe einen rassistisch umgetexteten Fußball-Fangesang:<br><br>Wir sind aus Cottbus, und nicht aus Ghana, wir hassen alle ... Afrikaner.<br><br>(spiegel)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            12.3730747,51.3396955,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Stellvertretender Leiter der Polizeischule in Leipzig</name>
+        <description><![CDATA[Wann:<br>2017 <br><br>Was:<br>Stellvertretender Leiter der Polizeischule hielt im Ethikunterricht eine Stunde darüber, dass er sich in seiner Heimat nicht mehr wohl und sicher fühle, weil an Silvester so viele Ausländer laut auf der Straße gefeiert hätten. (spiegel)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            12.3730747,51.3396955,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Schießausbilder in Sachsen</name>
+        <description><![CDATA[Wann:<br>2017<br><br>Was:<br>Ein Schießausbilder aus Sachsen soll seinen Schülern gesagt haben, sie müssten das Zielen lernen - wegen der "vielen Gäste", die zur Zeit nach Deutschland kämen. (spiegel)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            13.2017384,51.1045407,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>5 rechtsextremistische Straftaten durch Polizist:innen in Hamburg</name>
+        <description><![CDATA[Wann:<br>2015-heute<br><br>Was:<br>In Hamburg registrierte die Polizei fünf Straftaten in den vergangenen fünf Jahren. In einem Fall hatten Zollbeamte bei einem Polizisten fast 1000 Waffen und Waffenteile, Munition sowie Nazi-Devotionalien sichergestellt. Der Beschuldigte wurde zu einer Freiheitsstrafe von elf Monaten auf Bewährung sowie einer Geldstrafe verurteilt. Er sei immer noch im Dienst. (tagesspiegel)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            9.9936818,53.5510846,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>NSU 2.0 in Hamburg</name>
+        <description><![CDATA[Wann:<br>2020<br><br>Was:<br>In Hamburg befragten die hessischen Sonderermittler im Rahmen der NSU 2.0 Ermittlungen einen Polizisten und eine Polizistin, die unabhängig voneinander ihren dienstlichen Zugang zu Polizeicomputern genutzt haben sollen, um persönliche Daten der Journalistin Yaghoobifarah abzufragen und zwar ohne erkennbaren dienstlichen Grund. (tagesspiegel)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            9.9936818,53.5510846,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeiinterne Chatgruppe in Hessen</name>
+        <description><![CDATA[Wann:<br>2020<br><br>Was:<br>Polizeiinterne Chatgruppen mit rechtsextremen Inhalten. (tagesspiegel)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            9.1624376,50.6520515,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeiinterne Chatgruppe in Niedersachsen</name>
+        <description><![CDATA[Wann:<br>2020<br><br>Was:<br>Polizeiinterne Chatgruppe mit rechtsextremen Inhalten. (tagesspiegel)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            9.8450765,52.6367036,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeiinterne Chatgruppe in Schleswig-Holstein</name>
+        <description><![CDATA[Wann:<br>2020<br><br>Was:<br>Polizeiinterne Chatgruppe mit rechtsextremen Inhalten. (tagesspiegel)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            9.6961167,54.2193672,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeiinterne Chatgruppe in Baden-Württemberg</name>
+        <description><![CDATA[Wann:<br>2020<br><br>Was:<br>Polizeiinterne Chatgruppe mit rechtsextremen Inhalten. (tagesspiegel)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            9.3501336,48.6616037,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizei in München</name>
+        <description><![CDATA[Wann:<br>Juli 2020<br><br>Was:<br>Drei PoC wird der Zutritt zum Englischen Garten verweigert und ein Platzverbot erteilt. Begründung:  Die Krawalle von Frankfurt und Stuttgart.<br>Ein unbeteiligter Passant stellt das Vorgehen der Polizisten in Frage und erhält die Antwort „Er als weißer Kerl dürfe passieren, weil er im Gegensatz zu den drei Männern nicht ins Klientel passe“. (focus)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            11.5819806,48.1351253,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeitransporter in Duisburg</name>
+        <description><![CDATA[Wann:<br>Mai 2019<br><br>Was:<br>Aufkleber der rechtsextremen "Identitären Bewegung" in einem Transporter der Duisburger Polizei. Darauf die Parole: "Wehr dich, es ist dein Land!". (spiegel)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            6.7623293,51.4344079,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rechte Aufnäher in Ostritz</name>
+        <description><![CDATA[Wann:<br>Juni 2019<br><br>Was:<br>Bei einem Rechtsrockkonzert in Ostritz erschien ein Bundespolizist mit Aufnähern, welche in der rechten Szene getragen werden:<br>"Recte Faciendo Neminem Timeas" steht auf dem ersten Anhänger neben dem Symbol der Kreuzritter.. Übersetzt: "Tue recht und scheue niemanden". Rechtsradikale und auch Terroristen mit rechtsextremem Hintergrund, wie der Christchurch-Attentäter oder Anders Behring Breivik, berufen sich auf die Kreuzritter und deren Mythos.<br>Auf dem zweiten Aufnäher steht "Molon Labe" - "Komm und hol sie dir". Es steht dafür, nicht kampflos aufzugeben. Der Bezug zu den Spartanern ist bei Rechten beliebt. So nutzt die "Identitäre Bewegung" das griechische Lambda als Symbol. (spiegel)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            14.9314311,51.0157364,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>2 Polizisten in Krün</name>
+        <description><![CDATA[Wann:<br>Juni 2015<br><br>Was:<br>Während des G7-Gipfels auf Schloss Elmau haben zwei Polizisten in einem privaten Funkverkehr Goebbels nachgeahmt. (Spiegel)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            11.2786283,47.5051979,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizist in Berlin</name>
+        <description><![CDATA[Wann:<br>3. Oktober 2020<br><br>Was:<br>Ein Polizist trägt am Rande einer Demo des rechtsextremen 3. Wegs das Symbol des Sparta-Helms und den damit verbundenen Spruch „Molon Labe“ als Aufäher an seiner Uniform. Dieses wird gerne in rechten auch Waffenlobby-Kreisen benutzt. Private Patches dürfen im Einsatz nicht an Uniform angebracht werden und stellt ein regelwidriges Verhalten dar. (Foto-Strecke auf Twitter)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            13.404954,52.5200066,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>400 Fälle in der Bundespolizei </name>
+        <description><![CDATA[Wann:<br>2014-heute<br><br>Was:<br>Mindestens 400 Rechtsextremismus Verdachtsfälle in der Bundespolizei. (spiegel)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            10.451526,51.165691,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizist in Rheinland-Pfalz</name>
+        <description><![CDATA[Wann:<br>August 2018<br><br>Was:<br>"Reichsbürger" darf kein Polizist sein<br><br>Er erkenne die verfassungsrechtliche Ordnung der Bundesrepublik nicht an: Das Land Rheinland-Pfalz hat erfolgreich gegen einen 45-jährigen "Reichsbürger" auf Entfernung aus dem Dienst geklagt. (Spiegel)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            7.3089527,50.118346,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeibeamte in Wittlich</name>
+        <description><![CDATA[Wann:<br>Oktober 2019<br><br>Was:<br>Der Polizeibeamte N. (47) und sein Freund W. (55 ) sollten gemeinsame Sache gemacht haben. Die Vorwürfe der Staatsanwaltschaft gegen den Beamten waren heftig. Ein genehmigungspflichtiges Jagdgewehr samt Munition soll er seinem Freund W. überlassen haben. Anklagepunkt: Verdacht auf einen Verstoß gegen das Waffengesetz durch beide Angeklagten. Außerdem habe N. zwischen 2016 und 2017 in drei Fällen seine Zugangsdaten für das polizeiinterne Datensystem „Polis“ missbraucht, um Daten für Privatpersonen zur recherchieren. Zweimal auf Bitten von W. und einmal für einen noch gesondert verfolgten P. Anklagepunkt: Verdacht auf Verletzung des Dienstgeheimnisses.]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            6.889722,49.986944,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeibeamte in Nürnberg</name>
+        <description><![CDATA[Wann:<br>Februar 2019<br><br>Was:<br>Polizisten beobachteten Fackelmarsch auf Reichsparteitagsgelände<br><br>Zwei Zivilbeamte haben nach Behördenangaben den Neonazi-Umzug begleitet, griffen aber nicht ein. Bayerns Innenminister spricht von einem "nicht sehr glücklichen" Einsatz. (Zeit)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            11.0766654,49.4521018,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeibeamt:innen in Bayern</name>
+        <description><![CDATA[Wann:<br>Oktober 2019<br><br>Was:<br>Fast alle Bundesländer führen Disziplinarverfahren gegen Extremisten im Staatsdienst. In Bayern gibt es die meisten Verdachtsfälle.<br><br>Reichsbürger erkennen die Bundesrepublik und ihre Behörden nicht an. Doch ausgerechnet diese Menschen, meistens Männer, arbeiten offenbar gerne für genau diese Behörden, insbesondere für die Polizei.<br><br>Zahlreiche Bundesländer führten oder führen deswegen Disziplinarverfahren, entfernten Reichsbürger aus dem Beamtenverhältnis oder ergriffen andere Maßnahmen, um sie zu sanktionieren. Am stärksten ist der Freistaat Bayern mit solchen Probleme konfrontiert. Das ergab eine Umfrage der Frankfurter Rundschau unter den Bundesländern. (Frankfurter Rundschau)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            11.4978895,48.7904472,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeibeamt:innen in Sachsen</name>
+        <description><![CDATA[Wann:<br>Januar 2016<br><br>Was:<br>Was war passiert? Am Montag hatten Polizisten in der Nähe von Grimma, östlich von Leipzig, ein Auto mit vier Insassen kontrolliert. Sie waren offenbar auf dem Weg zu einer Gegenveranstaltung zur Demonstration von Pegida und Legida am gleichen Tag in Leipzig. Zwei davon sind im Polizeisystem als „linksmotivierte Straftäter“ registriert. Bei der Durchsuchung fand die Polizei vier Reizgasflaschen, ein Brecheisen, einen Kanister mit fünf Litern Diesel, drei Funkgeräte, eine Schussweste, einen GPS-Störsender, eine Gaspistole mit Munition, Leuchtraketen, einen Hammer und einen Holzknüppel.<br>All dies war kurze Zeit später nachzulesen – auf den Twitter-Accounts der rechtsextremen Legida und auch bei der NPD. Legida postete ein Polizeifoto der beschlagnahmten Gegenstände gemeinsam mit einem internen Dokument der Polizei, auf dem die Namen der Verdächtigen klar erkennbar waren. Die NPD zeigte das Dokument ebenfalls. (Welt)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            13.2017384,51.1045407,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizist ind Dresden</name>
+        <description><![CDATA[Wann:<br>Oktober 2020<br><br>Was:<br>Ein Polizist in Dresden ist wegen rechtsextremer Äußerungen vom Dienst suspendiert worden. Wie die Polizeidirektion Dresden am Dienstag mitteilte, ist er mit verfassungsfeindlichen Chatbeiträgen aufgefallen. Gegen den 38-Jährigen laufe ein Disziplinarverfahren.<br>Laut einem Bericht der "Sächsischen Zeitung" ist der Staatsschutz bei Ermittlungen rund um die rechtsextreme Gruppe "Freie Kameradschaft Dresden" auf den Beamten gestoßen. Demnach habe er sich in einer Chatgruppe von Mitarbeitern der Security-Szene verfassungsfeindlich geäußert. (mdr)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            13.7372621,51.0504088,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizist in Steinheim an der Murr</name>
+        <description><![CDATA[Wann?<br>Sommer 2019<br><br>Was?<br>In Online-Chats verherrlichte er den gewaltsamen Tod von Migrant:innen. Im Status seines Whatsapp-Messengers postete er das rassistische Video eines randalierenden Schwarzen mit dem Untertitel „Merkels Fachkräfte bei der Arbeit“.<br>Anschließend wurde eine Werbetasse mit dem Schriftzug: „Es gibt Probleme, die kann nur Heckler & Koch lösen“ eingeblendet, wie ein Sprecher des Amtsgerichts Heilbronn mitteilte. (stuttgarter nachrichten)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            9.2762397,48.9691889,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeipräsidium in Schlüchtern</name>
+        <description><![CDATA[Wann?<br>Januar 2019.<br><br>Was?<br>Zum Holocaustgedenktag wurden vor dem Schlüchterner Polizeipräsidium die deutsche und hessische Flagge _verkehrtherum_ auf Halbmast gehisst, Zeichen für die Reichsbürgerbewegung und ziemlich klare Ansage dafür, was vom Holocaustgedenktag gehalten wird. (fr.de)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            9.5255493,50.3493544,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>26 Polizeischüler:innen in Berlin</name>
+        <description><![CDATA[Wann:<br>14.Oktober 2020<br><br>Was:<br>Rechte Chatgruppe bei der Polizei, in welcher diverse Nachrichten und Memes mit menschenverachtenden, rassistischen oder verächtlichmachenden Inhalten, die sich unter anderem gegen Asylsuchende richteten, auch unter Verwendung von Hakenkreuzen ausgetauscht wurden. Weitere Nachrichten störten den öffentlichen Frieden und verharmlosten den Völkermord an den Juden.<br><br>26 Anwärter für den gehobenen Dienst der Polizei sollen der Gruppe angehört haben. Gegen sieben hat die Staatsanwaltschaft bereits ein Ermittlungsverfahren wegen Volksverhetzung und Verwendens von Kennzeichen verfassungswidriger Organisationen eingeleitet. Einem Beschuldigten wird die Verbreitung von Tierpornografie vorgeworfen. (berlin.de, taz)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            13.404954,52.5200066,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kommissar in Weimar</name>
+        <description><![CDATA[Wann:<br>2017<br><br>Was:<br>Rechter Kommissar, der Dickpics verschickt, der offenkundig an dem rechtsextremen Motiv des Attentäters aus Hanau zweifelt und Hetze gegen Geflüchtete verbreitet. Der Fake News und Verschwörungstheorien teilt, Der ein Video teilt mit dem Titel: „DEUTSCHE WACHT AUF! WIR LEBEN BEREITS JETZT IN EINER DIKTATUR!“ und Beiträge, die vor einer „Asylflut im Schatten von Corona“ warnen.<br><br>Der ein Video teilt mit dem Titel: „DEUTSCHE WACHT AUF! WIR LEBEN BEREITS JETZT IN EINER DIKTATUR!“ und Beiträge, die vor einer „Asylflut im Schatten von Corona“ warnen. (taz)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            11.3235439,50.9794934,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeibeamte in Weimar</name>
+        <description><![CDATA[Wann:<br>2012<br><br>Was:<br>Auf dem nächtlichen Nachhauseweg werden vier junge Erwachsene von der Polizei aufgegriffen und mit auf die Wache genommen.  Unter den Festgenommenen ist eine damals 22-jährige, in Ungarn geborene Frau. Sie wird in eine Einzelzelle gebracht. <br>Sie hat sich „bis auf die Unterwäsche ausziehen“ müssen. Beamte haben „eindeutige Onanie-Bewegungen“ in ihre Richtung gemacht, außerdem hätten diese sie mehrfach rassistisch und sexistisch beleidigt. Ein Beamter habe gesagt: „Dir geht es in Deutschland viel zu gut, wir müssen dir wohl mal zeigen, was die in deinem Land mit dir machen würden!“.<br>Der Fall wird öffentlich. Die Polizist:innen werden angezeigt, gegen sie werden Ermittlungen aufgenommen, diese werden später eingestellt, keiner der Beamten wird angeklagt.<br>(taz)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            11.3235439,50.9794934,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Drei Polizeischüler in Berlin</name>
+        <description><![CDATA[Wann:<br>27. April 2018<br><br>Drei Polizeischüler, die wegen rechter Äußerungen (einer der Anwärter hat mehrfach das Wort ‚Sieg‘ und ein weiterer anschließend das Wort ‚Heil‘ gerufen) bei einem Basketballspiel in erster Instanz zu Geldstrafen verurteilt wurden, sind noch vor Ende des Verfahrens in das Beamtenverhältnis auf Probe übernommen worden. (taz)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            13.404954,52.5200066,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Kriminalpolizist in Traunstein</name>
+        <description><![CDATA[Wann:<br>1025<br><br>Was:<br>Kriminalpolizist (Sachbearbeiter bei der Kriminalpolizeiinspektion, Abteilung Staatsschutz) soll er in seinem Dienstbüro eine große Collage an die Wand gehängt haben: zehn Hakenkreuze, zwei Bilder von Adolf Hitler und eine sogenannte Siegrune, wie sie auch von der SS verwendet wurde, waren laut Staatsanwaltschaft darauf abgebildet. Das Büro soll auch für Vernehmungen genutzt worden sein.. Angeklagt ist der Mann aber nicht nur wegen Verwenden von Kennzeichen verfassungswidriger Organisationen, sondern auch wegen Strafvereitelung im Amt. 2018 habe er gegen einen anderen Polizisten wegen Volksverhetzung ermittelt. Hintergrund waren rassistische Äußerungen gegenüber Muslimen in Whatsapp-Gruppen. Ein Strafverfahren gegen den Polizisten habe der Kripo-Beamte aber nicht eingeleitet, sondern fälschlicherweise behauptet, der Absender der Nachricht sei nicht mehr auszuforschen. <br><br>https://www.innsalzach24.de/bayern/hakenkreuze-und-hitler-bilder-im-dienstbuero-traunsteiner-kriminalpolizist-vor-amtsgericht-90065558.html<br><br>https://www.chiemgau24.de/chiemgau/traunstein/traunstein-ort29586/hakenkreuze-und-hitler-bilder-im-dienstbuero-traunsteiner-kriminalpolizist-vor-amtsgericht-90065558.html<br><br>https://www.sueddeutsche.de/bayern/traunstein-polizist-strafvereitelung-rechtsextremismus-1.5063068]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            12.6384037,47.8677574,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Köln</name>
+        <description><![CDATA[Wann:<br>2015 und 2018<br><br>was:<br>Polizeibeamter soll er in seinem Dienstbüro eine große Collage an die Wand gehängt haben: zehn Hakenkreuze, zwei Bilder von Adolf Hitler und eine sogenannte Siegrune, wie sie auch von der SS verwendet wurde, waren laut Staatsanwaltschaft darauf abgebildet. Das Büro soll auch für Vernehmungen genutzt worden sein.<br>Angeklagt ist der Mann aber nicht nur wegen Verwenden von Kennzeichen verfassungswidriger Organisationen, sondern auch wegen Strafvereitelung im Amt. <br>2018 habe er gegen einen anderen Polizisten wegen Volksverhetzung ermittelt. Hintergrund waren rassistische Äußerungen gegenüber Muslimen in Whatsapp-Gruppen. Ein Strafverfahren gegen den Polizisten habe der Kripo-Beamte aber nicht eingeleitet, sondern fälschlicherweise behauptet, der Absender der Nachricht sei nicht mehr auszuforschen. (presseportal.de)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            6.9602786,50.937531,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeibeamter in Köln</name>
+        <description><![CDATA[Wann:<br>Oktober 2020<br><br>Was:<br>Ein Kölner Beamter erschien zu einem Einsatz bei einer Gedenkveranstaltung für den rechtsextrem motivierten Anschlag in Halle offenbar in szenetypischer Kleidung. Sein Dienstherr hat ihn nun versetzt. (spiegel)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            6.9602786,50.937531,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeihauptmeister in Leipzig</name>
+        <description><![CDATA[Wann:<br>8. September 2020<br><br>Was:<br>Im Rahmen einer Präventionsmaßnahme zur Verkehrserziehung vor Grundschüler:innen und Lehrer:innen äußert sich ein Polizeihauptmeister rassistisch und vorurteilsverbreitend über Menschen mit Migrationshintergrund.<br>Ihm wurde die Führung der Dienstgeschäfte untersagt und ein Disziplinarverfahren eingeleitet. (twitter Polizei Sachsen)]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            12.3730747,51.3396955,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeibeamte in Hamburg</name>
+        <description><![CDATA[Wann:<br>19.10.2020<br><br>Was:<br>Polizei verharmloset und verzerrt in einer Pressemitteilung den bewußten Angriff von AfD-Anhängern gegenüber Antifaschist*innen, bei dem mehrere verletzt wurden, zum Teil schwer. Sie macht aus einem versuchten Mord ein Verkehrsdelikt und schiebt in ihrer Formulierung einen Teil der Schuld den Antifaschist*innen in die Schuhe. Außerdem gibt die Polizei in unmittelbarer Nähe der Menschen einen Schuß in die Luft ab.<br><br>https://www.belltower.news/autoangriff-bei-afd-veranstaltung-polizei-macht-aus-einem-versuchten-mord-ein-verkehrsdelikt-105605/<br><br>https://taz.de/Berichterstattung-ueber-Angriff-per-Auto/!5721298/]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            9.9936818,53.5510846,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeibeamtin in Hamburg</name>
+        <description><![CDATA[Wann:<br>14.10.2020<br><br>Was:<br>Polizistin aus Hamburg teilt reichsbürgerisches Gedankengut. <br><br>https://www.welt.de/regionales/hamburg/article217844436/Protest-gegen-Bussgeldbescheid-Reichsbuergerin-bei-Polizei-Hamburg-entdeckt.html]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            9.9936818,53.5510846,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizist in Heilbronn</name>
+        <description><![CDATA[Wann:<br>13.10.2020<br> <br>Was:<br>Ein Polizist steht vor Gericht, weil er ein Video mit rassistischer Mordphantasie per Messenger teilte.<br>https://www.tagblatt.de/Nachrichten/Rassismus-im-Chat-Polizist-vor-Gericht-475916.html]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            9.210879,49.1426929,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Zwei Polizisten in Ulm</name>
+        <description><![CDATA[Wann:<br>13.10.2020<br><br>Was:<br>Das Polizeipräsidium Ulm ermittelt gegen zwei Polizisten wegen Rechtsextremismus. <br>"Die meisten stehen auf dem Boden der Verfassung", sagt Polizeipräsident Weber.<br><br><br>https://www.augsburger-allgemeine.de/neu-ulm/Verdacht-auf-Rechtsextremismus-Ermittlungen-gegen-zwei-Beamte-der-Ulmer-Polizei-id58329766.html]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            9.9876076,48.4010822,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Rassistische Polizeiausbildungsbücher in Deutschland</name>
+        <description><![CDATA[Wann:<br>12.10.2020<br><br>Was:<br>Durch eine WDR-Reportage wird bekannt, dass mehrere Arten von rassistische Polizeiausbildungsbüchern bestehen und genutzt werden.<br><br>https://www1.wdr.de/mediathek/video/sendungen/unterwegs-im-westen/video-rassismus-was-hat-das-mit-mir-zu-tun-102.html<br><br>https://twitter.com/mamjahid/status/1316073559001837571]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            10.451526,51.165691,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Bereitschaftspolizei in Magdeburg</name>
+        <description><![CDATA[Was:<br>12.10.2020<br><br>Wann:<br>Bei der Bereitschaftspolizei in Magdeburg werden durch einen anonymen Hinweis antisemitische Äußerungen bekannt.<br> Keine Konsequenzen. <br><br>https://taz.de/Vorwuerfe-gegen-Polizei-Magdeburg/!5717488/<br>https://www.neues-deutschland.de/artikel/1143055.sachsen-anhalt-antisemitismus-bei-der-bereitschaftspolizei-in-sachsen-anhalt.html]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            11.6276237,52.1205333,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Gruppe von Polizist:innen in Krefeld</name>
+        <description><![CDATA[Wann:<br>11.10.2020<br><br>Was:<br>Eine Gruppe von Polizist*innen wird dabei gefilmt, wie sie einen Mann dunkler Hautfarbe festhalten und ihn dabei 10 Mal auf den Kopf schlagen. Dem zuvor ging ein Brand in dessen Haus. Augenzeug*innen berichten, der Mann habe nach seinem Kind gerufen und sich deshalb losreissen wollen. Die Polizei rechtfertigt im Nachgang die Aktion mit fadenscheinigen Behauptungen und Verharmlosungen.<br><br>https://taz.de/Polizeieinsatz-in-Krefeld/!5717304/<br><br>https://www.hna.de/politik/krefeld-videos-polizei-einsatz-nrw-hubertusstrasse-twitter-beamtin-mann-schlaege-zr-90066518.html]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            6.5853417,51.3387609,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizist in Berlin</name>
+        <description><![CDATA[Wann:<br>04.10.2020<br><br>Was:<br>Ein Polizist trägt am Rande einer Demo des rechtsextremen 3. Wegs rechtswidrig das Symbol des Sparta-Helms und den dazugehörigen Spruch „Molon Labe“ als Aufäher an seiner Uniform. Dieses wird gerne in rechten auch Waffenlobby-Kreisen benutzt. <br><br>https://www.morgenpost.de/berlin/article230586330/Berliner-Polizist-trug-offenbar-rechtsextremen-Aufnaeher.html]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            13.404954,52.5200066,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeianwärter in Meiningen</name>
+        <description><![CDATA[Wann:<br>02.10.2020<br><br>Was:<br>Polizeianwärter hat rechtsradikale Inhalte in Chat-Gruppe geteilt.<br><br>https://www.mdr.de/thueringen/polizei-ermittlungen-rechtsextremismus-staatsanwaltschaft-whatsapp-100.html]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            10.4190128,50.5739121,0
+          </coordinates>
+        </Point>
+      </Placemark>
+      <Placemark>
+        <name>Polizeihauptkommissar in Bielefeld</name>
+        <description><![CDATA[Wann:<br>01.10.2020<br><br>Was:<br>Polizeihauptkommissar verbreitet rechtsradikale Inhalte in Chatgruppe, 50 weitere Polizist:innen waren/sind auch Mitglied der Gruppe.<br> <br>https://rp-online.de/nrw/panorama/rechtsextremistische-chatgruppen-durchsuchungsbefehl-gegen-bielefelder-polizeibeamten-vollstreckt_aid-53686417]]></description>
+        <styleUrl>#icon-1899-DB4436-labelson</styleUrl>
+        <Point>
+          <coordinates>
+            8.5324708,52.0302285,0
+          </coordinates>
+        </Point>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>
