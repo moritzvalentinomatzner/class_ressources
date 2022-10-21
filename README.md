@@ -2,7 +2,7 @@
 Companion Repository für den Kurs "Kritsche Data Science", WiSe 2023 FU Berlin. 
 
 # Aufgabenblätter
-Hier findest du die Aufgabenblätter zu den Coding Sessions. Sie werden sowohl während als auch nach dem Kurs bearbeitet
+Hier findest du die Aufgabenblätter zu den Coding Sessions. Sie können sowohl gemeinsam während dem Kurs als auch eigenstädig bearbeitet werden. 
 
 # Kursbeschreibung 
 Der Kurs macht Studierende mit Grundkenntnissen des Programmierens und dem Sammeln, Visualisieren und Analysieren von Daten in der Programmiersprache R vertraut. Doch Data Science ist intim mit einer Geschichte von Ausbeutung und Unterdrückung verwoben. Der Kurs blickt deshalb auf die sozialen Beziehungen, welche in Daten und computergestützten Methoden der Analyse eingeschrieben sind durch eine intersektionale, machtkritische Linse. Und fragt, wie Daten aus einer emanzipatorischen Perspektive genutzt werden können. Dabei widmet sich der Kurs akademischer Literatur aber auch Projekten aus dem journalistischen, künstlerischen und aktivistischen Kontext. Als ein Einführungskurs richtet sich der Kurs explizit an Studierende ohne Vorkenntnisse in Statistik und Programmieren. Mehr: https://moritzvalentinomatzner.shinyapps.io/kdst/ 
