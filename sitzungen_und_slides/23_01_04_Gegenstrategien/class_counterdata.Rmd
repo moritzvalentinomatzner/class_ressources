@@ -1,0 +1,18 @@
+---
+title: "Strategien gegen das Panopticum: Counterdata and Sousiveillance"
+author: "Moritz Valentino Donatello Matzner"
+date: "Today"
+output:
+  beamer_presentation:
+    theme: default
+ #   fonttheme: structurebold
+    slide_level: 2
+  ioslides_presentation: default
+---
+
+examples
+- Antilynching campaign 
+
+
+
+Scholars have proposed various names for these instances of ground-up data collection, including counterdata or agonistic data collection, data activism, statactivism, and citizen science (when in the service of environmental justice). Whatever it’s called, it’s been going on for a long time. In 1895, civil rights activist and pioneering data journalist Ida B. Wells assembled a set of statistics on the epidemic of lynching that was sweeping the United States. She accompanied her data with a meticulous exposé of the fraudulent claims made by white people—typically, that a rape, theft, or assault of some kind had occurred (which it hadn’t in most cases) and that lynching was a justified response. Today, an organization named after Wells—the Ida B. Wells Society for Investigative Reporting—continues her mission by training up a new generation of journalists of color in the skills of data collection and analysis.
