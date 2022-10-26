@@ -171,6 +171,19 @@ my_charachter_vector[3]
 my_charachter_vector[-1]
 ```
 
+```{r}
+library(palmerpenguins)
+```
+
+```{r}
+data("penguins")
+View(penguins)
+names(penguins)
+summary(penguins)
+
+penguins$bill_length_mm[33]
+```
+
 ## Funktion
 
 ```{r}
@@ -184,6 +197,16 @@ meine_Funktion(1, 4)
 meine_Funktion(wert_1 = 1, wert_2 = 2)
 
 meine_Funktion
+```
+
+
+```{r}
+library(ggplot2)
+```
+
+```{r}
+ggplot(data = penguins) +
+  geom_point(aes(x=bill_length_mm, y=bill_depth_mm, color=island))
 ```
 
 # Relational Operators 
@@ -266,6 +289,7 @@ Tip:
 ```{r}
 
 x <- 1
+
 while (x < 100) {
   print(paste("x ist ", x, " und kleiner als 5"))
   x <- x+1

@@ -45,8 +45,6 @@ deadly_cops_filtered <- deadly_cops %>%
 >- Ein weiterer zentraler Befehl ist der pipe operator: ```%>%````
 >     + Er wird als "dann" ausgesprochen. 
 
-
-
 ***
 
 START CODE 
@@ -280,14 +278,13 @@ shot_per_year <- deadly_cops %>%
 
 hist(shot_per_year$number_shot)
 ```
+
 Warum ist das interessant? Weil wir uns jetzt die jahre anschauen würden, wo outlier sind um zu verstehen was da abgeht 
 
 ```{r}
 shot_per_year %>%
   filter(number_shot > 15)
 ```
-
-
 
 # Join Data 
 
@@ -353,9 +350,7 @@ df_joined %>%
   arrange(desc(average))
 ```
 
-
-
-# Let's code :) 
+# Aufgaben 
 
 ```{r eval=F}
 # mean and median by gender
