@@ -310,7 +310,6 @@ In welchem Bundesland gab es die meisten Hinweise auf eine psychische Ausnahmesi
 - Kreiere eine neue Variable "Quelle", welche den Wert "Ja" annimmt, falls es eine Berichterstattung in der Presse gab und "Nein", falls das nicht der Fall ist. 
 - Bei welchen Bundesländern gab es die meißte, bei welchen die wenigste Presseberichterstattung?
 
-
 # Join Data 
 
 Oft haben wir Daten aus verschiedenen Datenquellen und müssen diese miteinander verbinden. 
@@ -360,10 +359,9 @@ df_joined <- left_join(dc_bl,
 
 In welchem Bundesland gab es die meißten tödlichen Polizeischüsse, relativ zur Einwohner*innenzahl?
 
-
 ### Aufgabe
 
-Was könnte mit den Analysen die wir bis jetzt durchgeführt haben, nicht stimmen? Unter welchen Umständen wurden die Daten erhoben? 
+Was könnte mit den Analysen die wir bis jetzt durchgeführt haben, nicht stimmen?
 
 
 
