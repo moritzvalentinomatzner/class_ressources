@@ -1,0 +1,369 @@
+---
+title: "Einführung Data Wrangling mit dplyr: Tödliche Polizeischüsse in Deutschland"
+author: "Moritz Valentino Donatello Matzner"
+date: "Today"
+output: html_document
+---
+
+```{r}
+knitr::opts_chunk$set(message = F, 
+                      warning = F, 
+                      error = F, 
+                      eval = T, 
+                      out.height = "50%")
+```
+
+
+# Beginn
+
+## Datenimport 
+
+Wir importieren als erstes unsere Daten. Via point and click: 
+File -> Import Dataset --> select dataset
+```{r eval=T}
+library(readr)
+# deadly_cops <- read.csv("../data/deadly_cops/polizeischuesse.csv")
+deadly_cops <- read_csv("~/Documents/08_git_repos/class_mardown/data/deadly_cops/polizeischuesse.csv")
+```
+
+
+# Dplyr 
+
+- Ist die go-to Bibliothek wenn es um das Manipulieren von Daten geht   
+
+```{r eval=T}
+#install.packages("dplyr")
+library(dplyr)
+```
+
+Ein erster Überblick über das Dataset verschaffen wir uns mit den folgenden drei Funktionen: 
+
+```{r}
+names(deadly_cops)
+glimpse(deadly_cops)
+summary(deadly_cops)
+```
+
+## Die sechs Zentralen Funktionen in dplyr
+
+Dplyr hat sechs zentrale Funktionen: 
+- Filter Observationen nach Werten ```filter()```.
+- Organisiere die Datenwerte ```arrange()```.
+- Wähle Variablen mit ihrem Nahmen ```select()```.
+- Erzeuge neue Variablen indem du Funktionen auf existierende Variablen anwendest ```mutate()```.
+- Gruppiert Werte nach Merkmalen ```summarise()```.
+
+-  All diese Funktionen können in Kombination mit ```group_by()``` verwendet werden. Dadurch wird der *scope* der Funktion nicht auf das gesammte Datenset, sondern auf die einzelnen Gruppen angewendet.  
+>- Ein weiterer zentraler Befehl ist der pipe operator: ```%>%````. Er wird als "dann" ausgesprochen. 
+
+***
+
+## Select 
+
+- ```Select``` wählt Variablen aus
+- Das erste Argument ist der Name des DF, die weiteren sind die Variablen 
+
+```{r}
+select(deadly_cops, Fall, Name)
+```
+
+## Filter
+
+Mit ```filter()``` können Observationen nach ihren Werten gefiltert werden. 
+- Das erste Argument ist der Name des *dataframe*. Das zweite (und jedes weitere Argument) wird zum filtern verwendet. 
+
+```{r}
+filter(deadly_cops, Bundesland == "Berlin")
+```
+
+Wenn wir erst einzlene Variablen auswählen wollen und dann ihre Werte filtern wollen nutzen wir den Pipe operator. 
+
+```{r}
+deadly_cops %>%
+  select(Fall, Alter, Bundesland) %>%
+  filter(Bundesland == "Berlin")
+
+# wenn wir berlin und hamburg nutzen wollen nutzen wir nicht "und" sondern "oder" 
+
+deadly_cops %>%
+  select(Fall, Alter, Bundesland) %>%
+  filter(Bundesland == "Berlin" | Bundesland == "Hamburg")
+
+# oder wir nutzen einen vektor 
+
+bl_1 <- c("Berlin", "Hamburg")
+
+deadly_cops %>%
+  select(Fall, Alter, Bundesland) %>%
+  filter(Bundesland %in% bl_1)
+```
+
+Was, wenn wir mehr filtern wollen? 
+
+-> Erinner sich noch wer an logische Operatoren?
+
+Vergleiche und Logische Operatoren 
+>- Vergleich:  >, >=, <, <=, != (ungleich), == (gleich).
+>- Logische Operatoren: & ist “und”, | ist “oder”, and ! is “nicht”. 
+>- Ein weiteres wichtiges Instrument ist das Symbol ```%in%````
+    + es checkt, ob die werte eines vektors vorkommen 
+
+```{r}
+filter(deadly_cops, 
+       Bundesland %in% bl_1 & Datum > "2000-01-01")
+```
+
+### Aufgabe 
+
+Lade das Dataset und wähle die Variablen Fall, Bundesland und Datum. 
+
+Wende die Filterfunktion an um herauszufinden: 
+- Wie viele Fälle gab es in Hamburg seit 1990? 
+- Wie viele Fälle gab es in Bayern seit 1980?
+- Wie viele Fälle gab es in Berlin, bei denen es einen Schusswechsel gab?
+
+
+## Arrange 
+
+- ```arrange()``` sortiert Spalten und Daten innerhalb der Spalten 
+- Wenn wir zum beispiel das Datenset nach Alter sortieren wollen geben wir ein: 
+
+```{r}
+arrange(deadly_cops, Alter)
+
+# oder, indem wir die pipe funktion nutzen: 
+
+deadly_cops %>%
+  arrange(Alter)
+```
+
+## mutate
+
+- ```mutate()``` kreiert neue Variablen am Ende des Datensatzes
+- Das verb ist besonders stark im Verbund mit group_by, welches Daten nach Ausprägungen von Varialben gruppiert. 
+
+```{r}
+deadly_cops %>%
+  # wir fählen Fall, Alter und Bundesland aus
+  select(Fall, Alter, Bundesland) %>%
+  # wir gruppieren die Daten nach Bundesland 
+  group_by(Bundesland) %>%
+  # und berechnen das Median des Alters
+  mutate(mean_age = mean(Alter, na.rm=T))
+```
+## Summarise 
+
+das ist aber nicht so übersichtlich! Wir brauchen ja eigentlich nur einen Wert. Dafür nutzen wir das Verb summarise
+
+```{r}
+deadly_cops %>%
+  # Median des Alters
+  summarise(mean_age = mean(Alter, na.rm=T))
+```
+
+##group_by
+
+Oft interessiert uns, ob es eine variation zwischen einzlnen gruppen gibt. Dafür können wir unseren Datensatz gruppieren
+
+```{r}
+deadly_cops %>%
+  # wir fählen Fall, Alter und Bundesland aus
+  select(Fall, Alter, Bundesland) %>%
+  # wir gruppieren nach bundesland 
+  group_by(Bundesland) %>%
+  # und berechnen den mean, median, standard abweichung und anzahl an fällen 
+  summarise(mean_age = round(mean(Alter, na.rm = T), 0), 
+            median_age = round(median(Alter, na.rm = T), 0), 
+            sd_age = round(sd(Alter, na.rm = T)), 
+            observations = n()) %>%
+  arrange(median_age)
+```
+### Aufgabe 
+
+- In welchem Bundesland gab es die meisten tödlichen Polizeischüsse in den 1990er Jahren und in welchem in den 2000ern?
+
+
+## Zeitliche Entwicklung 
+
+Oft kann es interessant sein, stetige Variablen (wie Zeit) in Kategorien einzuteilen (wie Jahrzehnte). Dafür können wir die ifelse conditions in Verbund mit mutate nutzen
+
+```{r}
+#ifelse(test, yes, no)
+```
+
+
+```{r}
+deadly_cops %>%
+  mutate(Datum_aggregiert = ifelse(Datum < "2000-01-01", 
+                                   "vor_2000", 
+                                   "nach_2000")) %>%
+  group_by(Datum_aggregiert) %>%
+  summarise(Anzahl_Faelle = n())
+```
+
+
+## Case when 
+
+
+```{r}
+# case_when(condition == 1 ~ "Kondition 1", 
+#           condition == 2 ~ "Kondition 2")
+```
+
+
+```{r}
+cops_datum <- deadly_cops %>%
+  select(Datum, Alter) %>%
+  mutate(Datum_aggregiert = case_when(Datum > "2020-01-01" ~ "2020er", 
+                                      Datum > "2010-01-01" ~ "2010er", 
+                                      Datum > "2000-01-01" ~ "2000er", 
+                                      Datum > "1990-01-01" ~ "1990er", 
+                                      Datum > "1980-01-01" ~ "1980er", 
+                                      Datum > "1970-01-01" ~ "1970er"
+                                      )
+  ) %>%
+  group_by(Datum_aggregiert) %>%
+  summarise(Anzahl_Faelle = n())
+
+cops_datum
+
+library(ggplot2)
+ggplot(cops_datum, aes(x=Datum_aggregiert, y=Anzahl_Faelle, group=1)) +
+  geom_point(size = 2) +
+  geom_line(color="blue") +
+  theme_bw()
+```
+Was ist das Problem mit dem Plot?
+
+## Datenputzen 
+
+Oft sind Daten auch nicht so sauber wie sie auf dem ersten blick scheinen. 
+
+```{r}
+deadly_cops %>%
+  group_by(`Hinweise auf psychische Ausnahmesituation`) %>%
+  summarise(anzahl = n())
+```
+```{r}
+library(tidyr)
+```
+
+```{r}
+# we have to recode! 
+df_cops_psych <- deadly_cops %>%
+  select(Fall, Datum, `Hinweise auf psychische Ausnahmesituation`) %>%
+  mutate(Hinweis_psych_ausnahme = replace_na(`Hinweise auf psychische Ausnahmesituation`, "Nein")
+  ) %>%
+  mutate(Datum_aggregiert = case_when(Datum > "2020-01-01" ~ "2020er", 
+                                      Datum > "2010-01-01" ~ "2010er", 
+                                      Datum > "2000-01-01" ~ "2000er", 
+                                      Datum > "1990-01-01" ~ "1990er", 
+                                      Datum > "1980-01-01" ~ "1980er", 
+                                      Datum > "1970-01-01" ~ "1970er"
+                                      )
+         ) %>%
+  group_by(Datum_aggregiert, Hinweis_psych_ausnahme) %>%
+  summarise(Anzahl = n()) 
+
+df_cops_psych
+
+# Die Funktion spread macht ein Dataset von "long" zu "wide"
+
+df_cops_psych_2 <- df_cops_psych %>%
+  pivot_wider(names_from="Hinweis_psych_ausnahme", values_from="Anzahl") %>%
+  mutate(percent = Ja/(Ja+Nein)*100)
+
+library(ggplot2)
+ggplot2::ggplot(df_cops_psych_2, aes(x=Datum_aggregiert, y=percent, group=1)) +
+  geom_point(size=2, color="darkblue") +
+  geom_line(color="darkblue") +
+  theme_minimal() +
+  ggtitle(label="Hinweis auf psychische Ausnahmesituationen seit 1976")
+
+```
+
+oder: wurden mehr und mehr menschen erschosssen?
+
+```{r}
+shot_per_year <- deadly_cops %>%
+  select(Fall, Datum) %>%
+  mutate(Jahr = format(as.Date(Datum, "%Y-%m-%d"), "%Y")) %>%
+  group_by(Jahr) %>%
+  summarise(number_shot = n())
+
+hist(shot_per_year$number_shot)
+```
+
+Warum ist das interessant? Weil wir uns jetzt die jahre anschauen würden, wo outlier sind um zu verstehen was da abgeht 
+
+```{r}
+shot_per_year %>%
+  filter(number_shot > 15)
+```
+
+### Aufgabe 
+
+In welchem Bundesland gab es die meisten Hinweise auf eine psychische Ausnahmesituation relativ zu allen Fällen? Reproduziere dafür den Code von oben aber gruppiere ihn nach Bundesland. 
+
+### Aufgabe
+
+- Kreiere eine neue Variable "Quelle", welche den Wert "Ja" annimmt, falls es eine Berichterstattung in der Presse gab und "Nein", falls das nicht der Fall ist. 
+- Bei welchen Bundesländern gab es die meißte, bei welchen die wenigste Presseberichterstattung?
+
+
+# Join Data 
+
+Oft haben wir Daten aus verschiedenen Datenquellen und müssen diese miteinander verbinden. 
+
+```{r}
+`?left_join()
+```
+
+```{r}
+bl <- c("Nordrhein-Westfalen",	
+"Bayern",	
+"Baden-Württemberg", 
+"Niedersachsen",	 
+"Hessen",	
+"Rheinland-Pfalz",	 
+"Sachsen",	
+"Berlin",	
+"Schleswig-Holstein",
+"Brandenburg",	
+"Sachsen-Anhalt",	 
+"Thüringen",	
+"Hamburg",	
+"Mecklenburg-Vorpommern",	
+"Saarland",	
+"Bremen")
+
+einwohnerinnen <- c(17.926, 13.14, 11.103,8.003 ,6.293 , 4.098 ,4.057 , 3.664 , 	2.911 , 2.531 , 2.181 ,2.12 , 1.852 , 1.611 , 0.984 , 0.68)
+
+df_bl_data <- data.frame(bl, einwohnerinnen)
+```
+
+
+```{r}
+dc_bl <- deadly_cops %>%
+  group_by(Bundesland) %>%
+  filter(Datum > "1990-01-01") %>%
+  summarise(count = n()) 
+
+df_joined <- left_join(dc_bl, 
+                       df_bl_data,
+                       by=c("Bundesland"="bl"))
+
+
+```
+
+### Aufgabe 
+
+In welchem Bundesland gab es die meißten tödlichen Polizeischüsse, relativ zur Einwohner*innenzahl?
+
+
+### Aufgabe
+
+Was könnte mit den Analysen die wir bis jetzt durchgeführt haben, nicht stimmen? Unter welchen Umständen wurden die Daten erhoben? 
+
+
+
