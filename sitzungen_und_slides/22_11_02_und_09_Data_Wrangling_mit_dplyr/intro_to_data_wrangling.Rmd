@@ -22,10 +22,9 @@ Wir importieren als erstes unsere Daten. Via point and click:
 File -> Import Dataset --> select dataset
 ```{r eval=T}
 library(readr)
-# deadly_cops <- read.csv("../data/deadly_cops/polizeischuesse.csv")
-deadly_cops <- read_csv("~/Documents/08_git_repos/class_mardown/data/deadly_cops/polizeischuesse.csv")
+polizeischuesse <- read_csv("~/Documents/08_git_repos/class_ressources/datasets/cops_deadly/polizeischuesse.csv")
+View(polizeischuesse)
 ```
-
 
 # Dplyr 
 
@@ -39,8 +38,12 @@ library(dplyr)
 Ein erster Überblick über das Dataset verschaffen wir uns mit den folgenden drei Funktionen: 
 
 ```{r}
+deadly_cops <- polizeischuesse 
+
 names(deadly_cops)
+
 glimpse(deadly_cops)
+
 summary(deadly_cops)
 ```
 
@@ -65,9 +68,7 @@ Dplyr hat sechs zentrale Funktionen:
 - Das erste Argument ist der Name des DF, die weiteren sind die Variablen 
 
 ```{r}
-
-
-select(deadly_cops, Fall, Name)
+select(deadly_cops,Fall, Name)
 
 # die ersten drei variablen 
 select(deadly_cops, 1:3)
@@ -79,12 +80,16 @@ Mit ```filter()``` können Observationen nach ihren Werten gefiltert werden.
 - Das erste Argument ist der Name des *dataframe*. Das zweite (und jedes weitere Argument) wird zum filtern verwendet. 
 
 ```{r}
+names(deadly_cops)
 filter(deadly_cops, Bundesland == "Berlin")
 ```
 
 Wenn wir erst einzelne Variablen auswählen wollen und dann ihre Werte filtern wollen nutzen wir den *Pipe operator*. 
 
 ```{r}
+select(deadly_cops,Fall, Name, Bundesland)
+filter(deadly_cops, Bundesland == "Berlin")
+
 deadly_cops %>%
   select(Fall, Alter, Bundesland) %>%
   filter(Bundesland == "Berlin")
@@ -106,18 +111,18 @@ Vergleiche und Logische Operatoren
 
 deadly_cops %>%
   select(Fall, Alter, Bundesland) %>%
-  filter(Bundesland == "Berlin" | Bundesland == "Hamburg")
+  filter(Bundesland == "Berlin" | Bundesland == "Hamburg" | Bundesland == "Bayern")
 
 # oder wir nutzen einen vektor 
 
-bl_1 <- c("Berlin", "Hamburg")
+bl_1 <- c("Berlin", "Hamburg", "Bayern")
 
 deadly_cops %>%
   select(Fall, Alter, Bundesland) %>%
   filter(Bundesland %in% bl_1)
 
 filter(deadly_cops, 
-       Bundesland %in% bl_1 & Datum > "2000-01-01")
+       Bundesland %in% bl_1 | Datum > "2000-01-01")
 ```
 
 # Was ist der Unterschied zwischen 
@@ -133,8 +138,8 @@ deadly_cops %>%
 
 deadly_cops %>%
   select(Fall, Alter, Bundesland) %>%
-  filter(Bundesland == "Berlin", 
-         Alter > 30)
+  filter(Bundesland == "Berlin") %>%
+  filter(Alter > 30)
 ```
 
 ### Aufgabe 
@@ -148,6 +153,17 @@ Wende die Filterfunktion an um herauszufinden:
 
 Speichere die Datasets jeweils in einem neuen Dataframe. 
 
+```{r}
+deadly_cops %>%
+  select(Fall, Bundesland, Datum) %>%
+  filter(Bundesland == "Hamburg" | Bundesland == "Bayern" & Datum >= "1990-01-01")
+
+deadly_cops %>%
+  select(Fall, Bundesland, Schusswechsel) %>%
+  filter(Bundesland == "Berlin", 
+         Schusswechsel == "Ja")
+```
+
 
 ## Arrange 
 
@@ -160,7 +176,7 @@ arrange(deadly_cops, Alter)
 # oder, indem wir die pipe funktion nutzen: 
 
 deadly_cops %>%
-  arrange(Alter)
+  arrange(desc(Alter))
 ```
 
 ## mutate
@@ -172,9 +188,8 @@ deadly_cops %>%
   # wir wählen Fall, Alter und Bundesland aus
   select(Fall, Alter, Bundesland) %>%
   # und berechnen das Median des Alters
-  mutate(mean_age = mean(Alter))
-
-sum(is.na(deadly_cops$Alter))
+  mutate(mean_age = mean(Alter, 
+                         na.rm=T))
 ```
 
 ## Summarise 
@@ -189,7 +204,14 @@ deadly_cops %>%
 
 ##group_by
 
-Oft interessiert uns, ob es eine variation zwischen einzlnen gruppen gibt. Dafür können wir unseren Datensatz gruppieren
+# Sitzung am 9.11.2022
+
+- Verschiedene Funktionen (pivot_wide, format, as.Date)
+- conditional statements (ifelse, casewhen)
+- join data : verschiedene datenquellen werden miteinander verbunden 
+
+
+Oft interessiert uns, ob es eine variation zwischen einzelnen gruppen gibt. Dafür können wir unseren Datensatz gruppieren
 
 ```{r}
 deadly_cops %>%
@@ -228,9 +250,6 @@ deadly_cops %>%
   group_by(Datum_aggregiert) %>%
   summarise(Anzahl_Faelle = n())
 ```
-#### Aufgabe 
-
-Wie viele minderjährige Menschen wurden von der Polizei erschossen? 
 
 ## Case when 
 
@@ -269,6 +288,11 @@ deadly_cops %>%
   select(Datum) 
 ```
 
+#### Aufgabe 
+
+Wie viele minderjährige Menschen wurden von der Polizei erschossen? 
+
+
 ## Datenputzen 
 
 Oft sind Daten auch nicht so "sauber" wie sie auf dem ersten blick scheinen. 
@@ -278,11 +302,21 @@ deadly_cops %>%
   group_by(`Hinweise auf psychische Ausnahmesituation`) %>%
   summarise(anzahl = n())
 ```
+
 ```{r}
 library(tidyr)
 ```
 
+Dafür können wir die Funktion replace_na() nutzen
+--> Für fast jeden Task in R gibt es eine bestimmte Funktion, wie bsw. replace_na() statt einer ifelse()
 ```{r}
+
+# das hier 
+deadly_cops %>%
+  select(Fall, Datum, `Hinweise auf psychische Ausnahmesituation`) %>%
+  mutate(Hinweis_psych_ausnahme = ifelse(is.na(`Hinweise auf psychische Ausnahmesituation`), "Nein", "Ja"))
+
+# macht das gleiche wie das hier 
 df_cops_psych <- deadly_cops %>%
   select(Fall, Datum, `Hinweise auf psychische Ausnahmesituation`) %>%
   mutate(Hinweis_psych_ausnahme = replace_na(`Hinweise auf psychische Ausnahmesituation`, "Nein")
@@ -302,25 +336,69 @@ df_cops_psych
 
 ```
 
+## Funktion pivot_wider 
+
+Die Funktion spread macht ein Dataset von "long" zu "wide"
+
+```{r}
+fish_encounters
+
+# interessieren uns die fische?
+pivot_wider(fish_encounters,
+            names_from = station,  
+            values_from = seen)
+
+# interessieren uns die stationen?
+pivot_wider(fish_encounters,
+            names_from = fish,  
+            values_from = seen)
+
+pivot_longer(fish_wide, 
+             cols = !station,
+             names_to = "fish", 
+             values_to = "seen") 
+```
+
+
 ```{r}
 
-# Die Funktion spread macht ein Dataset von "long" zu "wide"
-
 df_cops_psych_2 <- df_cops_psych %>%
-  pivot_wider(names_from="Hinweis_psych_ausnahme", values_from="Anzahl") %>%
-  mutate(percent = Ja/(Ja+Nein)*100)
+  pivot_wider(names_from="Hinweis_psych_ausnahme", values_from="Anzahl") 
+```
 
+
+### Aufgabe 
+
+Nutze df_cops_psych_2 und berechne die prozentzahl an Hinweisen auf psychische Ausnahmefälle pro Jahrzehnt. 
+
+```{r}
+df_cops_psych_2 <- df_cops_psych_2 %>%
+  mutate(percent = Ja/(Ja+Nein)*100)
+```
+
+```{r}
 library(ggplot2)
 ggplot2::ggplot(df_cops_psych_2, aes(x=Datum_aggregiert, y=percent, group=1)) +
   geom_point(size=2, color="darkblue") +
   geom_line(color="darkblue") +
   theme_minimal() +
-  ggtitle(label="Hinweis auf psychische Ausnahmesituationen seit 1976")
+  ggtitle(label="Antieg von Hinweisen auf psychische Ausnahmesituationen bei tödlichen Polizeischüssen", 
+          subtitle = "1976-2022 | ggregiert auf Dekaden")
 ```
+
 Wichtige Frage: Warum wurde sich nicht die Frage gestellt, ob es sich um eine psychische Ausnahmesituation handelte?
+Wer hat die Daten erhoben? Warum wurden die erhoben? Wie wurden sie öffentlich gemacht? 
+Hat die Polizei ein Interesse daran, die Daten akkurat zu repräsentieren? 
 
-oder: wurden mehr und mehr menschen erschosssen?
+## Funktion format und as.Date
 
+Date ist eine eigener Datentyp in R den wir auch verändern können. 
+```{r}
+class(deadly_cops$Datum)
+format(as.Date(deadly_cops$Datum, "%Y-%m-%d"), "%Y")
+```
+
+So können wir bsp eine neue Variable erstellen, welche das Jahr ist - und dann auch aggregiert werden kann 
 ```{r}
 shot_per_year <- deadly_cops %>%
   select(Fall, Datum) %>%
@@ -342,7 +420,6 @@ shot_per_year %>%
 ```
 
 ### Aufgabe 
-
 
 - In welchem Bundesland gab es die meisten Hinweise auf eine psychische Ausnahmesituation relativ zu allen Fällen? Reproduziere dafür den Code von oben aber gruppiere ihn nach Bundesland. 
 
@@ -398,24 +475,27 @@ df_joined <- left_join(dc_bl,
 
 ### Aufgabe 
 
-Wie viele Menschen wurden in den neuen, wie viele in den alten Bundesländern erschossen?
-```{r}
+In welchem Bundesland gab es die meißten tödlichen Polizeischüsse, relativ zur Einwohner*innenzahl?
 
-df_joined_2 <- left_join(deadly_cops, 
-                         df_bl_data, 
-                         by=c("Bundesland"="bl"))
-
-neue_bl <- c("Mecklenburg-Vorpommern", "Brandenburg", "Sachsen-Anhalt", "Thüringen", "Sachsen")
-
-df_joined_2 %>%
-  mutate(neue_BLs = ifelse(Bundesland %in% neue_bl, "neues_BL", "altes_Bl")) %>%
-  group_by(neue_BLs) %>%
-  summarise(anzahl = n())
-```
 
 ### Aufgabe 
 
-In welchem Bundesland gab es die meißten tödlichen Polizeischüsse, relativ zur Einwohner*innenzahl?
+Wie viele Menschen wurden in den neuen, wie viele in den alten Bundesländern erschossen? 
+Hinweis: macht der Vergleich Sinn? Für was könntest du evtl filtern um einen aussagekräftigeren Vergleich zu haben? 
+```{r}
+deadly_cops %>%
+  select(Datum, Bundesland) %>%
+  filter(Datum >= "1990-01-01") %>%
+  group_by(Bundesland) %>%
+  summarise(anzahl_Faelle = n()) %>%
+  mutate(neue_BLs = ifelse(Bundesland %in% neue_bl, "neues_BL", "altes_Bl")) %>%
+  left_join(df_bl_data, by=c("Bundesland"="bl")) %>%
+  group_by(neue_BLs) %>%
+  mutate(anzahl_Faelle_pro_neualt = sum(anzahl_Faelle), 
+         sum_einwohnerinnen = sum(einwohnerinnen), 
+         relativ = anzahl_Faelle_pro_neualt/sum_einwohnerinnen)
+  
+```
 
 
 ### Aufgabe
