@@ -206,10 +206,30 @@ deadly_cops %>%
 
 # Sitzung am 9.11.2022
 
+- In-depth summarise, mutate und gruou_by die drei wichtigsten Funktionen 
+- In Verbund mit conditional statements (ifelse, casewhen)
 - Verschiedene Funktionen (pivot_wide, format, as.Date)
-- conditional statements (ifelse, casewhen)
 - join data : verschiedene datenquellen werden miteinander verbunden 
 
+## Recap
+
+Durchschnittsalter von Menschen, die durch Polizeischüsse umgebracht wurden
+--> was ist der Unterschied zwischen summarise() und mutate() ?
+
+```{r}
+deadly_cops %>%
+  # wir fählen Fall, Alter und Bundesland aus
+  select(Fall, Alter, Bundesland) %>%
+  # und berechnen den mean, median, standard abweichung und anzahl an fällen 
+  mutate(mean_age = round(mean(Alter, na.rm = T), 0), 
+            median_age = round(median(Alter, na.rm = T), 0),
+            # zählt die rows
+            observations = n()) %>%
+  arrange(desc(observations))
+```
+
+
+# Neue Sachen 
 
 Oft interessiert uns, ob es eine variation zwischen einzelnen gruppen gibt. Dafür können wir unseren Datensatz gruppieren
 
@@ -217,16 +237,16 @@ Oft interessiert uns, ob es eine variation zwischen einzelnen gruppen gibt. Daf�
 deadly_cops %>%
   # wir fählen Fall, Alter und Bundesland aus
   select(Fall, Alter, Bundesland) %>%
-  # wir gruppieren nach bundesland 
+  # gruppieren 
   group_by(Bundesland) %>%
   # und berechnen den mean, median, standard abweichung und anzahl an fällen 
   summarise(mean_age = round(mean(Alter, na.rm = T), 0), 
-            median_age = round(median(Alter, na.rm = T), 0), 
-            sd_age = round(sd(Alter, na.rm = T)), 
-            # zählt die rows pro gruppe 
+            median_age = round(median(Alter, na.rm = T), 0),
+            # zählt die rows
             observations = n()) %>%
   arrange(desc(observations))
 ```
+
 ### Aufgabe 
 
 - In welchem Bundesland gab es die meisten tödlichen Polizeischüsse in den 1990er Jahren und in welchem in den 2000ern?
@@ -238,7 +258,7 @@ Oft kann es interessant sein, stetige Variablen (wie Zeit) in Kategorien einzute
 Eine Möglichkeit sind *ifelse conditions* in Verbund mit mutate()
 
 ```{r}
-#ifelse(test, yes, no)
+#ifelse(testing a logical condition, if condition == T do this, if condition == F do this)
 ```
 
 
@@ -281,6 +301,7 @@ ggplot(cops_datum, aes(x=Datum_aggregiert, y=Anzahl_Faelle, group=1)) +
   geom_line(color="darkblue") +
   theme_minimal()
 ```
+
 Was ist das Problem mit dem Plot?
 
 ```{r}
@@ -303,12 +324,15 @@ deadly_cops %>%
   summarise(anzahl = n())
 ```
 
+Falls du das Packet tidyr noch nicht heruntergeladen hast, unkommentiere die übernächste Zeite indem du das # entfernst 
 ```{r}
+#install.packages("tidyr")
 library(tidyr)
 ```
 
 Dafür können wir die Funktion replace_na() nutzen
 --> Für fast jeden Task in R gibt es eine bestimmte Funktion, wie bsw. replace_na() statt einer ifelse()
+
 ```{r}
 
 # das hier 
@@ -341,6 +365,8 @@ df_cops_psych
 Die Funktion spread macht ein Dataset von "long" zu "wide"
 
 ```{r}
+library(fish)
+
 fish_encounters
 
 # interessieren uns die fische?
@@ -361,7 +387,6 @@ pivot_longer(fish_wide,
 
 
 ```{r}
-
 df_cops_psych_2 <- df_cops_psych %>%
   pivot_wider(names_from="Hinweis_psych_ausnahme", values_from="Anzahl") 
 ```
@@ -370,11 +395,6 @@ df_cops_psych_2 <- df_cops_psych %>%
 ### Aufgabe 
 
 Nutze df_cops_psych_2 und berechne die prozentzahl an Hinweisen auf psychische Ausnahmefälle pro Jahrzehnt. 
-
-```{r}
-df_cops_psych_2 <- df_cops_psych_2 %>%
-  mutate(percent = Ja/(Ja+Nein)*100)
-```
 
 ```{r}
 library(ggplot2)
@@ -398,19 +418,14 @@ class(deadly_cops$Datum)
 format(as.Date(deadly_cops$Datum, "%Y-%m-%d"), "%Y")
 ```
 
-So können wir bsp eine neue Variable erstellen, welche das Jahr ist - und dann auch aggregiert werden kann 
-```{r}
-shot_per_year <- deadly_cops %>%
-  select(Fall, Datum) %>%
-  mutate(Jahr = format(as.Date(Datum, "%Y-%m-%d"), "%Y")) %>%
-  group_by(Jahr) %>%
-  summarise(number_shot = n())
+### Aufgabe: mutate und*oder summarise?
 
-hist(shot_per_year$number_shot)
+Frage: Wie viele Menschen wurden pro Jahr erschossen? 
+- erstelle eine neue Variable "Jahr"
+- Gruppiere nach "Jahr" 
+- Zähle die Ausprägungen der Variable nach Kategorie 
 
-ggplot(data=shot_per_year) +
-  geom_line(aes(y=number_shot, x=Jahr, group=1))
-```
+## Pro Jahr 
 
 Warum ist das interessant? Weil wir uns jetzt zB die jahre anschauen können, wo outlier sind um zu verstehen was da abgeht 
 
@@ -428,13 +443,12 @@ shot_per_year %>%
 - Kreiere eine neue Variable "Quelle", welche den Wert "Ja" annimmt, falls es eine Berichterstattung in der Presse gab und "Nein", falls das nicht der Fall ist. 
 - Bei welchen Bundesländern gab es die meißte, bei welchen die wenigste Presseberichterstattung?
 
-
-# Join Data 
+# Joining Data 
 
 Oft haben wir Daten aus verschiedenen Datenquellen und müssen diese miteinander verbinden. 
 
 ```{r}
-`?left_join()
+?left_join()
 ```
 
 ```{r}
@@ -475,32 +489,19 @@ df_joined <- left_join(dc_bl,
 
 ### Aufgabe 
 
-In welchem Bundesland gab es die meißten tödlichen Polizeischüsse, relativ zur Einwohner*innenzahl?
+- In welchem Bundesland gab es die meißten tödlichen Polizeischüsse, relativ zur Einwohner*innenzahl? Beginne mit unseren Ausgangsdatensatz. 
+
+- Wie viele Menschen wurden in den neuen, wie viele in den alten Bundesländern erschossen? 
+- Tip: Erstelle einen Vektor mit den alten oder neuen Bundesländern. Falls die Ausprägung einer Variablen sich in diesem Vektor findet, wird ihr ein neuer Wert zugeschrieben. 
 
 
-### Aufgabe 
+# Hausaufgabe - du hast dafür zwei wochen Zeit! 
 
-Wie viele Menschen wurden in den neuen, wie viele in den alten Bundesländern erschossen? 
-Hinweis: macht der Vergleich Sinn? Für was könntest du evtl filtern um einen aussagekräftigeren Vergleich zu haben? 
-```{r}
-deadly_cops %>%
-  select(Datum, Bundesland) %>%
-  filter(Datum >= "1990-01-01") %>%
-  group_by(Bundesland) %>%
-  summarise(anzahl_Faelle = n()) %>%
-  mutate(neue_BLs = ifelse(Bundesland %in% neue_bl, "neues_BL", "altes_Bl")) %>%
-  left_join(df_bl_data, by=c("Bundesland"="bl")) %>%
-  group_by(neue_BLs) %>%
-  mutate(anzahl_Faelle_pro_neualt = sum(anzahl_Faelle), 
-         sum_einwohnerinnen = sum(einwohnerinnen), 
-         relativ = anzahl_Faelle_pro_neualt/sum_einwohnerinnen)
-  
-```
-
-
-### Aufgabe
-
-Was könnte mit den Analysen die wir bis jetzt durchgeführt haben, nicht stimmen? Unter welchen Umständen wurden die Daten erhoben? 
-
-
-
+- Lade den Datansatz *immo_reduced*
+- Erstelle eine neue Variable sqm_price, welche den Quadratmeterpreis der angebotenen Wohnungen angibt.  
+- Recherchiere alle Wohnungsunternehmen, welche mehr als 3.000 Wohnungen in Berlin vermieten. 
+- Recherchiere alle kommunalen Wohnungsunternehmen in Berlin. 
+- Erstelle jeweils einen Vektor, der die Unternehmen beinhaltet. 
+- Erstelle eine neue Variable "Vermieter_typ", welcher die angebotenen Wohnungen nach Vermietertyp klassifiziert: Privat, von enteignung betroffen, kommunale Unternehmen, Unternehmen. Dafür musst du herausfinden, ob ein String sich in diesem Vektor befindet. 
+- Tip: Manchmal hat das gleiche Unternehmen unterschiedliche Schreibweisen. Nutze str_detect aus dem packet stringr um die Präsenz einer Zeichenabfolge in einem String zu finden. Unterstützung findest du hier: https://stackoverflow.com/questions/35962426/multiple-strings-with-str-detect-r 
+- Speichere den Datensatz
