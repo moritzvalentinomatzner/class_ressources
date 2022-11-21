@@ -202,26 +202,35 @@ deadly_cops %>%
   summarise(mean_age = mean(Alter, na.rm=T))
 ```
 
+
+
 ##group_by
 
 # Sitzung am 9.11.2022
 
-- In-depth summarise, mutate und gruou_by die drei wichtigsten Funktionen 
+- In-depth summarise, mutate und gruoup_by -- die drei wichtigsten Funktionen 
 - In Verbund mit conditional statements (ifelse, casewhen)
 - Verschiedene Funktionen (pivot_wide, format, as.Date)
-- join data : verschiedene datenquellen werden miteinander verbunden 
+- join data: verschiedene datenquellen werden miteinander verbunden 
+
+```{r}
+library(dplyr)
+library(readr)
+deadly_cops <- read_csv("data/deadly_cops/polizeischuesse.csv")
+deadly_cops <- polizeischuesse
+```
 
 ## Recap
 
 Durchschnittsalter von Menschen, die durch Polizeischüsse umgebracht wurden
---> was ist der Unterschied zwischen summarise() und mutate() ?
+--> was ist der Unterschied zwischen summarise() und mutate()?
 
 ```{r}
 deadly_cops %>%
   # wir fählen Fall, Alter und Bundesland aus
   select(Fall, Alter, Bundesland) %>%
   # und berechnen den mean, median, standard abweichung und anzahl an fällen 
-  mutate(mean_age = round(mean(Alter, na.rm = T), 0), 
+  summarise(mean_age = round(mean(Alter, na.rm = T), 0), 
             median_age = round(median(Alter, na.rm = T), 0),
             # zählt die rows
             observations = n()) %>%
@@ -251,6 +260,16 @@ deadly_cops %>%
 
 - In welchem Bundesland gab es die meisten tödlichen Polizeischüsse in den 1990er Jahren und in welchem in den 2000ern?
 
+```{r}
+deadly_cops %>%
+  select(Datum, Bundesland) %>%
+  group_by(Bundesland) %>%
+  filter(Datum >= "1990-01-01", Datum <= "1999-12-31") %>%
+  summarise(Faelle_pro_Bundesland = n()) %>%
+  arrange(desc(Faelle_pro_Bundesland))
+```
+
+
 ## Zeitliche Entwicklung 
 
 Oft kann es interessant sein, stetige Variablen (wie Zeit) in Kategorien einzuteilen (wie Jahrzehnte). 
@@ -278,16 +297,24 @@ deadly_cops %>%
 #           condition == 2 ~ "Kondition 2")
 ```
 
+```{r}
+deadly_cops %>%
+  mutate(Datum_aggregiert = case_when(Datum < "2000-01-01" ~ "vor_2000",
+                                      # und für alles andere 
+                                      TRUE ~ "nach_2000")) %>%
+  group_by(Datum_aggregiert) %>%
+  summarise(Anzahl_Faelle = n())
+```
 
 ```{r}
-cops_datum <- deadly_cops %>%
-  select(Datum, Alter) %>%
+deadly_cops %>%
+  select(Datum) %>%
   mutate(Datum_aggregiert = case_when(Datum > "2020-01-01" ~ "2020er", 
                                       Datum > "2010-01-01" ~ "2010er", 
                                       Datum > "2000-01-01" ~ "2000er", 
                                       Datum > "1990-01-01" ~ "1990er", 
                                       Datum > "1980-01-01" ~ "1980er", 
-                                      Datum > "1970-01-01" ~ "1970er"
+                                      TRUE ~ "1970er"
                                       )
   ) %>%
   group_by(Datum_aggregiert) %>%
@@ -302,6 +329,7 @@ ggplot(cops_datum, aes(x=Datum_aggregiert, y=Anzahl_Faelle, group=1)) +
   theme_minimal()
 ```
 
+
 Was ist das Problem mit dem Plot?
 
 ```{r}
@@ -312,6 +340,14 @@ deadly_cops %>%
 #### Aufgabe 
 
 Wie viele minderjährige Menschen wurden von der Polizei erschossen? 
+
+```{r}
+deadly_cops %>%
+  select(Alter) %>%
+  mutate(Kinder = ifelse(Alter < 18, "minderjaehrig", "volljaehrig")) %>%
+  group_by(Kinder) %>%
+  summarise(Tote_Kinder = n())
+```
 
 
 ## Datenputzen 
@@ -326,7 +362,7 @@ deadly_cops %>%
 
 Falls du das Packet tidyr noch nicht heruntergeladen hast, unkommentiere die übernächste Zeite indem du das # entfernst 
 ```{r}
-#install.packages("tidyr")
+install.packages("tidyr")
 library(tidyr)
 ```
 
@@ -334,6 +370,7 @@ Dafür können wir die Funktion replace_na() nutzen
 --> Für fast jeden Task in R gibt es eine bestimmte Funktion, wie bsw. replace_na() statt einer ifelse()
 
 ```{r}
+is.na(deadly_cops$`Hinweise auf psychische Ausnahmesituation`)
 
 # das hier 
 deadly_cops %>%
@@ -365,8 +402,6 @@ df_cops_psych
 Die Funktion spread macht ein Dataset von "long" zu "wide"
 
 ```{r}
-library(fish)
-
 fish_encounters
 
 # interessieren uns die fische?
@@ -378,23 +413,26 @@ pivot_wider(fish_encounters,
 pivot_wider(fish_encounters,
             names_from = fish,  
             values_from = seen)
-
-pivot_longer(fish_wide, 
-             cols = !station,
-             names_to = "fish", 
-             values_to = "seen") 
 ```
 
 
 ```{r}
-df_cops_psych_2 <- df_cops_psych %>%
-  pivot_wider(names_from="Hinweis_psych_ausnahme", values_from="Anzahl") 
+df_cops_psych
+df_cops_psych %>%
+  pivot_wider(names_from="Hinweis_psych_ausnahme", values_from="Anzahl")
+
+df_cops_psych_2
 ```
 
 
 ### Aufgabe 
 
-Nutze df_cops_psych_2 und berechne die prozentzahl an Hinweisen auf psychische Ausnahmefälle pro Jahrzehnt. 
+```{r}
+df_cops_psych_2 <- df_cops_psych_2 %>%
+  mutate(percent = Ja / (Ja+Nein))
+```
+
+Nutze df_cops_psych_2 und berechne die Prozentzahl an Hinweisen auf psychische Ausnahmefälle pro Jahrzehnt. 
 
 ```{r}
 library(ggplot2)
@@ -402,13 +440,15 @@ ggplot2::ggplot(df_cops_psych_2, aes(x=Datum_aggregiert, y=percent, group=1)) +
   geom_point(size=2, color="darkblue") +
   geom_line(color="darkblue") +
   theme_minimal() +
-  ggtitle(label="Antieg von Hinweisen auf psychische Ausnahmesituationen bei tödlichen Polizeischüssen", 
-          subtitle = "1976-2022 | ggregiert auf Dekaden")
+  ggtitle(label="Psychische Ausnahmesituationen bei tödlichen Polizeischüssen", 
+          subtitle = "1976-2022 | Aggregiert auf Jahrzehnte")
 ```
 
-Wichtige Frage: Warum wurde sich nicht die Frage gestellt, ob es sich um eine psychische Ausnahmesituation handelte?
-Wer hat die Daten erhoben? Warum wurden die erhoben? Wie wurden sie öffentlich gemacht? 
-Hat die Polizei ein Interesse daran, die Daten akkurat zu repräsentieren? 
+## Wichtige Fragen zu dem Datensatz: 
+- Wurde sich die Frage gestellt, ob es sich um eine psychische Ausnahmesituation handelte?
+- Wer hat die Daten erhoben? Warum wurden die erhoben? Können sie angefochten werden?
+- Wie wurden sie öffentlich gemacht? 
+- Hat die Polizei ein Interesse daran, die Daten akkurat zu repräsentieren? 
 
 ## Funktion format und as.Date
 
@@ -420,10 +460,12 @@ format(as.Date(deadly_cops$Datum, "%Y-%m-%d"), "%Y")
 
 ### Aufgabe: mutate und*oder summarise?
 
-Frage: Wie viele Menschen wurden pro Jahr erschossen? 
+Frage: Wie viele Menschen wurden pro Jahr in Deutschland von der Polizei erschossen? 
 - erstelle eine neue Variable "Jahr"
 - Gruppiere nach "Jahr" 
 - Zähle die Ausprägungen der Variable nach Kategorie 
+
+Mache das gleiche für Monat. Wie musst du dafür die Formatierung ändern?
 
 ## Pro Jahr 
 
@@ -442,6 +484,8 @@ shot_per_year %>%
 
 - Kreiere eine neue Variable "Quelle", welche den Wert "Ja" annimmt, falls es eine Berichterstattung in der Presse gab und "Nein", falls das nicht der Fall ist. 
 - Bei welchen Bundesländern gab es die meißte, bei welchen die wenigste Presseberichterstattung?
+
+# 23.11. 
 
 # Joining Data 
 
@@ -479,9 +523,13 @@ df_bl_data <- data.frame(bl, einwohnerinnen)
 dc_bl <- deadly_cops %>%
   group_by(Bundesland) %>%
   filter(Datum > "1990-01-01") %>%
-  summarise(count = n()) 
+  summarise(count = n())
 
-df_joined <- left_join(dc_bl, 
+left_join(df_bl_data, 
+                       dc_bl,
+                       by=c("bl"="Bundesland"))
+
+left_join(dc_bl, 
                        df_bl_data,
                        by=c("Bundesland"="bl"))
   
@@ -490,7 +538,6 @@ df_joined <- left_join(dc_bl,
 ### Aufgabe 
 
 - In welchem Bundesland gab es die meißten tödlichen Polizeischüsse, relativ zur Einwohner*innenzahl? Beginne mit unseren Ausgangsdatensatz. 
-
 - Wie viele Menschen wurden in den neuen, wie viele in den alten Bundesländern erschossen? 
 - Tip: Erstelle einen Vektor mit den alten oder neuen Bundesländern. Falls die Ausprägung einer Variablen sich in diesem Vektor findet, wird ihr ein neuer Wert zugeschrieben. 
 
