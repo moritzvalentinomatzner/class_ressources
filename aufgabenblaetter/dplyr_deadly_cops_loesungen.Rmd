@@ -1,0 +1,266 @@
+---
+title: "dplyr_deadly_cops_loesungen"
+output: html_document
+date: "2022-11-25"
+---
+
+
+# Intro
+Zuerst laden wir immer die Libraries
+```{r Libraries}
+# Falls sie noch nicht installiert sind entferne den # damit der Code ausgeführt wird
+# install.packages("dplyr")
+# install.packages("readr")
+
+# Falls du die Pakete schon heruntergeladen hast
+library(dplyr)
+library(readr)
+```
+
+```{r Datenimport}
+# eventuell hast du einen anderen Pfad! Falls das der Fall ist kann du den Datensatz über click-and-point (File --> Import Dataset --> auswählen) installieren oder indem du den richtigen Pfad eingibts. 
+deadly_cops <- read_csv("data/deadly_cops/polizeischuesse.csv")
+
+# tädliche Polizeischüsse in Deutschland seit 1976
+# Eine erste Übersicht verschaffen wir uns mit glimpse()
+glimpse(deadly_cops)
+```
+
+# Aufgaben 
+
+## Basics 
+- In welcher Stadt wurden die meißten Menschen von der Polizei erschossen? 
+```{r}
+deadly_cops %>%
+  # wir gruppieren die daten 
+  group_by(Ort) %>%
+  # erstellen eine neue variable, welche wir Anzahl nennen. 
+  # Die funktion n() zählt die Ausprägungen 
+  summarise(Anzahl = n()) %>%
+  arrange(desc(Anzahl))
+```
+
+- Wie viele Menschen wurden seit Beginn der Aufzeichnung von der Polizei pro Bundesland erschossen? 
+```{r}
+deadly_cops %>%
+  group_by(Bundesland) %>%
+  summarise(Anzahl = n())
+```
+
+- In welcher Stadt wurden die meißten Menschen von der Polizei in Bayern erschossen? 
+```{r}
+deadly_cops %>% 
+  # wir filtern nach der Ausprägung "Bayern" der Variable Bundesland
+  filter(Bundesland =="Bayern") %>%
+  # gruppieren nach der variable Ort
+  group_by(Ort) %>%
+  # und zählen die Fälle pro gruppierter Ausprägung
+  summarise(Anzahl = n()) %>%
+  arrange(desc(Anzahl))
+```
+
+## Neue Variablen erstellen I
+
+- Wie viele Menschen wurden pro Jahr in Deutschland von der Polizei erschossen? Erstelle dafür eine neue Variable "Jahr". Nutze dazu format() in Verbund mit as.Date().
+
+```{r}
+deadly_cops %>%
+  # wir erstellen eine neue variable Jahr
+  mutate(Jahr = format(as.Date(Datum, "%Y-%m-%d"), "%Y")) %>%
+  group_by(Jahr) %>%
+  summarise(anzahl = n())
+```
+
+- In welchem Bundesland gab es die meisten tödlichen Polizeischüsse in den 1990er Jahren und in welchem in den 2000ern? 
+
+```{r}
+deadly_cops %>%
+  # wir wählen die variablen aus, welche wir für die analyse brauchen 
+  select(Fall, Bundesland, Datum) %>%
+  # wir filtern nach einem bestimmten Datum 
+  filter(Datum >= "1990-01-01" & Datum < "2000-01-01") %>%
+  group_by(Bundesland) %>%
+  summarise(observations = n()) %>%
+  arrange(desc(observations))
+
+deadly_cops %>%
+  select(Fall, Bundesland, Datum) %>%
+  group_by(Bundesland) %>%
+  filter(Datum >= "2000-01-01" & Datum < "2010-01-01") %>%
+  summarise(observations = n()) %>%
+  arrange(desc(observations))
+
+```
+
+- Wie viele minderjährige Menschen wurden von der Polizei erschossen? Erstelle dafür eine neue Variable mit mutate() und ifelse()
+```{r}
+deadly_cops %>%
+  # wir erstellen eine neue variable mit mutate() - da wir für jeden fall diese
+  # neue variable haben wollen 
+  # Dann nehmen wir ifelse, die drei argumente hat: 
+  # das erste ist eine Bedingung, die überprüft wird. Diese kann TRUE oder False sein
+  mutate(Minderjaehrig = ifelse(Alter <= 18, 
+                                # wenn die Bedingunng T ist, gibt sie diesen Wert an 
+                                "Minderjährig", 
+                                # wenn die Bedingung F ist, gibt sie diesen Wert an
+                                "Volljährig")) %>%
+  # wir gruppieren nach der neuen variablen 
+  group_by(Minderjaehrig) %>%
+  # und zählen die ausprägungen 
+  summarise(amount = n())
+```
+
+## Neue Variablen erstellen II 
+- In welchem Bundesland gab es die meisten Hinweise auf eine psychische Ausnahmesituation relativ zu allen Fällen? + Ersetze dafür zuerst die NA mit "Nein". Dafür kannst du die Funktion replace_na() aus der Bibliothek tidyr nutzen. Falls du die noch nicht heruntergeladen hast mach das mit install_packages()
++ Gruppiere die Daten. Wende dann pivot_wider() an. 
++ Berechne dann die Prozentzahl. Dafür musst du eventuell wieder NAs erstzen.. 
+```{r}
+# install.packages("tidyr")
+library(tidyr)
+
+df_cops_psych_bl <- deadly_cops %>%
+  select(Fall, Datum, Bundesland, `Hinweise auf psychische Ausnahmesituation`) %>%
+  # wir erstellen eine neue Variable und ersetzen die NAs 
+  mutate(Hinweis_psych_ausnahme = replace_na(`Hinweise auf psychische Ausnahmesituation`, "Nein")) %>%
+  group_by(Bundesland, Hinweis_psych_ausnahme) %>%
+  summarise(Anzahl = n()) 
+
+df_cops_psych_bl %>%
+  # um die daten weiter zu verarbeiten pivoten wir den datensatz
+  pivot_wider(names_from="Hinweis_psych_ausnahme", values_from="Anzahl") %>%
+  mutate(Ja = replace_na(Ja, 0), 
+         Nein = replace_na(Nein, 0), 
+         percent = Ja/(Ja+Nein)*100)
+```
+
+- Wie haben sich die Hinweise auf psychische Ausnahmesituationen über die Zeit verändert? Erstelle eine neue Variable Datum, welche die Daten in Jahrzehnte gruppiert. Berechne dann die Hinweise auf psychische Ausnahmesituationen over time in Prozent
+
+```{r}
+df_cops_psych <- deadly_cops %>%
+  select(Fall, Datum, `Hinweise auf psychische Ausnahmesituation`) %>%
+  mutate(Hinweis_psych_ausnahme = replace_na(`Hinweise auf psychische Ausnahmesituation`, "Nein")
+  ) %>%
+  # case_when macht was ähnliches wie ifelse - wir nutzen es, wenn wir viele Bedingungen haben. 
+  mutate(Datum_aggregiert = case_when(Datum > "2020-01-01" ~ "2020er", 
+                                      Datum > "2010-01-01" ~ "2010er", 
+                                      Datum > "2000-01-01" ~ "2000er", 
+                                      Datum > "1990-01-01" ~ "1990er", 
+                                      Datum > "1980-01-01" ~ "1980er", 
+                                      Datum > "1970-01-01" ~ "1970er"
+                                      )
+         ) %>%
+  group_by(Datum_aggregiert, Hinweis_psych_ausnahme) %>%
+  summarise(Anzahl = n()) 
+
+df_cops_psych_2 <-df_cops_psych %>%
+  pivot_wider(names_from="Hinweis_psych_ausnahme", values_from="Anzahl") %>%
+  mutate(Percent_over_time = Ja/(Ja+Nein))
+
+df_cops_psych_2
+```
+
+- Kreiere eine neue Variable "Quelle", welche den Wert "Ja" annimmt, falls es eine Berichterstattung in der Presse gab und "Nein", falls das nicht der Fall ist. 
++ Bei welchen Bundesländern gab es die meißte, bei welchen die wenigste Presseberichterstattung?
++ Bei manchen Vorfällen ist ein Wikipedia Artikel verlinkt. Erstelle eine neue Variable, die angibt, ob es sich bei der Quelle um einen Wikipediaartikel handelt. 
++ Tip: Nutze die Funktion ```str_detect()``` aus dem package ```tidyr``` um die Präsenz von einem string in einer Variablen zu finden. 
+
+```{r}
+quelle <- deadly_cops %>%
+  select(Quellen, Bundesland) %>%
+  mutate(Quelle = ifelse(is.na(Quellen), "Nein", "Ja")) %>%
+  group_by(Quelle, Bundesland) %>%
+  summarise(Amount_berichte = n())
+
+library(tidyr)
+quelle_wide <- quelle %>%
+  pivot_wider(names_from = Quelle, values_from = Amount_berichte) 
+
+berichte <- quelle_wide %>% 
+  mutate(percent_berichte = Ja / (Nein+Ja)) %>%
+  mutate(anzahl_faell = Ja+Nein) %>%
+  arrange(percent_berichte) 
+
+berichte
+
+library(stringr)
+deadly_cops %>%
+  select(Datum, Quellen, Bundesland) %>%
+  # wir suchen in dem String Quellen nach dem Pattern "wikipedia" 
+  mutate(Wikipedia = ifelse(str_detect(string = Quellen, 
+                                       pattern = "wikipedia"), 
+                            T, F)) %>%
+  filter(Wikipedia == T) 
+```
+
+## Joining Data
+- In welchem Bundesland gab es die meißten tödlichen Polizeischüsse, relativ zur Einwohner*innenzahl? 
++ Erstelle einen Vektor mit c(), der die Namen aller Bundesländer hat und einen zweiten Vektor, der die Einwohner:innenanzahl beinhaltet. Auch wenn etwas analytische Tiefe verloren geht nutzen wir die gleiche Einwphner:innenanzahl für alle Jahre. 
++ Verbinde die vektoren zu einem Dataframe mit der Funktion data.frame()
++ Für welchen Zeitraum solltest du die Daten zu tödlichen Polizeischüssen filtern, damit ein Vergleich nach Bundesland Sinn macht? 
++ Verbinde nun beide Datensätze mit der Funktion df_join. Untersützung findest du, wenn du ?left_join() eingibst. 
+
+```{r}
+
+bl <- c("Nordrhein-Westfalen",	
+"Bayern",	
+"Baden-Württemberg", 
+"Niedersachsen",	 
+"Hessen",	
+"Rheinland-Pfalz",	 
+"Sachsen",	
+"Berlin",	
+"Schleswig-Holstein", 
+"Brandenburg",	
+"Sachsen-Anhalt",	 
+"Thüringen",	
+"Hamburg",	
+"Mecklenburg-Vorpommern",	
+"Saarland",	
+"Bremen")
+
+einwohnerinnen <- c(17.926, 13.14, 11.103,8.003 ,6.293 , 4.098 ,4.057 , 3.664 , 	2.911 , 2.531 , 2.181 ,2.12 , 1.852 , 1.611 , 0.984 , 0.68)
+
+# wir verbinden beide vektoren zu einem DF 
+df_bl_data <- data.frame(bl, einwohnerinnen)
+
+dc_bl <- deadly_cops %>%
+  filter(Datum > "1990-01-01") %>%
+  group_by(Bundesland) %>%
+  summarise(count = n())
+
+merged_df <- left_join(df_bl_data, 
+                       dc_bl,
+                       # die variablen heißen in beiden dfs unterschiedlich!
+                       # hier definieren wir welche Spalten wir jeweils als identifiers nutzen 
+                       by=c("bl"="Bundesland"))
+
+merged_df %>%
+  mutate(average = round(count/einwohnerinnen)) %>%
+  arrange(desc(average))
+```
+
+- Werden mehr Menschen von der Polizei in den alten oder neuen Bundesländern erschossen, wenn wir für die Einwohner:innenanzahl kontrollieren? Beginne mit unseren Ausgangsdatensatz. 
++ Erstelle auch hierfür einen Vektor mit neuen oder alten Bundesländern. Erstelle eine neue Variable neue_BLs, eine Aussage trifft, ob es sich um ein neues BL handelt. 
++ Verbinde dann die Daten mit unserem Vektor zu Einwohner:innen 
++ Und berechne die Fälle pro neues/altes Bundeslannd, relativ zu Einwohner:innenanzahl 
+
+
+```{r}
+neue_bl <- c("Sachsen", "Thüringen", "Sachsen-Anhalt", "Brandenburg", "Mecklenburg-Vorpommern")
+
+deadly_cops %>%
+  select(Datum, Bundesland) %>%
+  filter(Datum >= "1990-01-01") %>%
+  group_by(Bundesland) %>%
+  summarise(anzahl_Faelle = n()) %>%
+  # wir fragen, ob die strings aus dem vektor neue_bl in der ausprägung von Bundesland vorkommen 
+  mutate(neue_BLs = ifelse(Bundesland %in% neue_bl, "neues_BL", "altes_Bl")) %>%
+  # dann verbinden wir die daten 
+  left_join(df_bl_data, by=c("Bundesland"="bl")) %>%
+  group_by(neue_BLs) %>%
+  summarise(anzahl_Faelle_pro_neualt = sum(anzahl_Faelle), 
+         sum_einwohnerinnen = sum(einwohnerinnen), 
+         relativ = anzahl_Faelle_pro_neualt/sum_einwohnerinnen)
+
+
+```
