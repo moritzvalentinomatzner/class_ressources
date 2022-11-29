@@ -1,0 +1,124 @@
+---
+title: "ggplot2_loesungen"
+output: html_document
+date: "2022-11-04"
+---
+
+### Aufgabe
+
+- Lade das Datenset *immo* 
+- Suche dir zwei Variablen und mache einen Scatterplot indem du *geom_point* nutzt
+
+```{r}
+ggplot(subset(immo, Rent < 2000)) +
+  geom_point(aes(x=Area, y=Rent))
+```
+
+- Wann wurden die amgebotenen Wohnungen gebaut? Findest du die Variable, welches das Baujahr der angebotenen Wohnung angibt? Nutze dplyr um einen neuen Datensatz zu soeichern, der die Anzahl von Wohnungen pro Bauhjahr angibt. Plotte diesen Datensatz mit ggplot und geom_line() 
+
+```{r}
+names(immo)
+by_year <- immo %>%
+  group_by(Year, Vermieter_typ) %>%
+  summarise(amount = n()) %>%
+  filter(Year <= 2022)
+
+ggplot(data = by_year, 
+       aes(x=Year, 
+           y=amount, 
+           color=Vermieter_typ)) +
+  geom_line() +
+  theme_minimal()
+
+```
+
+### Aufgabe
+- Nutze das argument *color* um eine dritte Dimension aus den Daten zu mappen.
+- Füge außerdem *geom_smooth* als weitere Geometrie neben *geom_point* hinzu
+- Falls es zu viele Daten sind, nutzte das Argument *size* um alle Datenpunkte zu verkleinern und das Argument *alpha* um die Deckkraft zu veringern. 
+
+```{r}
+immo <- read.csv("/Users/moru/Documents/08_git_repos/class_mardown/markdowns_for_teaching/22_11_02_und_09_Data_Wrangling_mit_dplyr/immo_reduced_for_class", sep=",")
+
+ggplot(subset(immo, Rent < 2000)) +
+  geom_point(aes(x=Area, 
+                  y=Rent, 
+                  color=Vermieter_typ, 
+                 ), size=0.3, alpha=0.2
+              ) +
+  theme_classic()
+```
+
+### Aufgabe 
+
+Mache einen Boxplot der eine logarythmische Transformation von "Rent" auf die y-Achse und die Variable "Vermieter_typ" auf die x-Achse mappt. 
+
+```{r, out.width="75%"}
+ggplot(data = immo) +
+  geom_boxplot(mapping= aes(x = Vermieter_typ, y=log(Rent)))+
+  theme_classic()
+```
+
+Finde heraus, wie viele Angebote in dem Datensatz welchem Vermietertyp zuzuordnen sind. 
+- Wie würdest du das mit dplyr berechnen? 
+
+```{r, out.width="50%", fig.align="center"}
+ggplot(data=immo) +
+  geom_bar(aes(x=Vermieter_typ)
+           ) +
+  theme_classic()
+
+immo %>%
+  group_by(Vermieter_typ) %>%
+  summarise(Anzahl = n())
+```
+### Aufgabe
+
+- Nutze *geom_density* um die relative verteilung von Angeboten nach Vermieter_typ zu plotten. 
+- Reduziere die Transparenz bei allen Plots 
+- Schränke die Datenbasis ein und beziehe nur Angebote mit einem qm-Preis von unter 30€ ein. 
+
+```{r , out.width="75%"}
+density <- ggplot(data = subset(immo, sqm_price < 40)) +
+  geom_density(aes(x=sqm_price, 
+                   fill=Vermieter_typ), 
+               alpha=0.5
+               )+
+  theme_classic()
+
+density
+```
+
+### Aufgabe
+
+- Mache einen neuen Plot mit der Geometrie *geom_jitter*. 
+- Füge mit *stat_summary* noch einen roten Punkt hinzu, welcher den Gruppenmedian denotiert.  
+
+```{r }
+ggplot(immo, 
+       aes(x=Vermieter_typ, 
+                  y=log(sqm_price)
+           )
+       ) +
+  geom_jitter(width = 0.4,
+              size = 0.05,
+              alpha=0.5) +
+  stat_summary(fun = median, 
+               color= "red", 
+               size=0.2) +
+  theme_classic()
+
+ggplot(immo, 
+       aes(x=Vermieter_typ, 
+                  y=log(sqm_price)
+           )
+       ) +
+  geom_point(width = 0.4,
+              size = 0.05,
+              alpha=0.5) +
+  stat_summary(fun = median, 
+               geom = "point", 
+               color= "red", 
+               size=2) +
+  theme_classic()
+```

@@ -1,0 +1,175 @@
+---
+title: "class_scrape"
+output: html_document
+date: "2022-08-27"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(dplyr)
+library(rvest)
+library(ggmap)
+library(stringr)
+library(leaflet) # for interactive maps
+library(ggplot2) # tidyverse data visualization package
+
+library(sf) # spatial features 
+```
+
+# Scrape Wikipedia 
+
+## HTML
+```{r}
+link = "https://de.wikipedia.org/wiki/Todesopfer_rechtsextremer_Gewalt_in_der_Bundesrepublik_Deutschland"
+
+# given a url, it gives you an html
+page = read_html(link)
+```
+
+```{r Scraping}
+everything <- page %>%
+  # wir suchen aus dem source code in html die dinge, die uns interessieren!
+  html_nodes("td") %>%
+  # holen uns den text aus den tags
+  html_text() 
+
+Date <- page %>%
+  html_nodes(".has-text-pink") %>%
+  html_text()
+```
+
+```{r}
+everything_red <- everything[103:1586]
+
+length(everything_red)
+everything_red[5]
+
+
+scrape_table <- function(Variablenname, Anfangsposition){
+  Variablenname <- c()
+  i <- Anfangsposition
+  while (i <= 1484) {
+  Variablenname <- append(Variablenname, everything_red[i])
+  i = i+4
+  }
+  print(Variablenname)
+}
+
+```
+
+```{r}
+name <- scrape_table(Name, 1)
+todesdatum <- scrape_table(Datum, 2)
+todesort <- scrape_table(Todesort, 3)
+alter <- scrape_table(Alter, 4)
+
+df_todesopfer <- data.frame(name, todesdatum, todesort, alter)
+```
+
+```{r}
+# register a key
+register_google(key = "AIzaSyDyotZqOTUfbeaDyK8IamJeigawROhKKB4")
+```
+
+```{r}
+df_todesopfer_geo <- df_todesopfer %>%
+  mutate_geocode(todesort)
+```
+
+
+
+# Todesopfer nach Quelle
+
+```{r}
+verdachtsfall <- page %>%
+  # wir suchen aus dem source code in html die dinge, die uns interessieren!
+  html_nodes(".hintergrundfarbe6") %>%
+  # holen uns den text aus den tags
+  html_text() 
+
+nichtAnerkannt <-  page %>%
+  # wir suchen aus dem source code in html die dinge, die uns interessieren!
+  html_nodes(".hintergrundfarbe3") %>%
+  # holen uns den text aus den tags
+  html_text() 
+```
+
+# Merge both datasets
+
+```{r}
+df_todesopfer_geo$name %in% nichtAnerkannt 
+```
+
+
+```{r}
+df_todesopfer_complete <- df_todesopfer_geo %>%
+  mutate(anerkanntDurchBuReg = case_when(name %in% nichtAnerkannt == T ~ "Ja", 
+                                    name %in% nichtAnerkannt == F ~ "Nein"), 
+         verdachtsfall = case_when(name %in% verdachtsfall == T ~"Ja", 
+                                   name %in% verdachtsfall == F ~ "Nein")
+  )
+```
+
+
+
+## Plot 
+
+```{r}
+names_recode <- c("Philipp W.", "Zygmunt R.", "Charles Werabe")
+
+df_todesopfer_complete_plot <- df_todesopfer_complete %>%
+  filter(lon > 0) %>%
+  filter(name %in% names_recode == F)
+```
+
+```{r}
+leaflet(data=df_todesopfer_complete_plot) %>%
+  addTiles() %>%
+  addCircleMarkers(lng = ~lon, 
+             lat = ~lat, 
+             popup = ~name,
+             radius = 1, 
+             color = "black")
+```
+
+# Import Dataset on Verwaltungsgrenzen 
+
+```{r}
+brd <- st_read("../data/brd_verwaltungsgrenzen/vg2500_bld.shp")
+```
+
+```{r}
+ggplot() +
+  geom_sf(data = brd$geometry, 
+          fill="white") +
+  geom_text(data = df_todesopfer_complete_plot, 
+            aes(x=lon, y=lat, label = "Einzeltäter"), 
+            size=2, 
+            position=position_jitter(width=0.2,height=0.2)
+            ) +
+  theme_minimal()
+```
+
+
+
+
+
+
+
+
+## Point in Polygon
+
+```{r}
+# Create spatial object
+sf_todesfaelle <- st_as_sf(df_todesopfer_complete_plot, 
+                           coords = c("lon", "lat"), 
+                           crs =  "WGS84")
+
+intersection <- st_intersection(x=brd, 
+                                y=sf_todesfaelle)
+
+```
+
