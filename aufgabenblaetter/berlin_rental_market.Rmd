@@ -1,0 +1,36 @@
+---
+title: "dplyr_berlin_rental_market"
+output: html_document
+date: "2022-11-25"
+---
+
+---
+title: "berlin_rental_market_loesungen"
+output: html_document
+date: "2022-11-25"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Berlin Rental Market 
+
+Lade den Datansatz *immo_reduced* und die Bibliotheken dpylr, read r und stringr
+
+1. Erstelle eine neue Variable sqm_price, welche den Quadratmeterpreis der angebotenen Wohnungen angibt.  
+- Welche Unternehmen bieten die meißten Wohnungen an? 
+- Welcher Anbieter hat die höchste durchschnittliche Angebotsmiete pro QM? Inkludiere nur Anbierter:innen, die mehr als fünf Wohnungen anbieten. 
+- Welche Anbieter*innen haben die niedrigste durchschnittliche Angebotsmiete?
+
+
+2. DW & Co enteignen I
+- Recherchiere alle Wohnungsunternehmen, welche laut DW&Co enteignen mehr als 2000 Wohnungen in Berlin vermieten. 
+- Recherchiere alle kommunalen Wohnungsunternehmen. 
+- Erstelle eine neue Variable "Vermieter_typ", welcher die angebotenen Wohnungen nach Vermietertyp klassifiziert: Privat, von enteignung betroffen, kommunale Unternehmen, Unternehmen.  
+- Tip: Manchmal hat das gleiche Unternehmen unterschiedliche Schreibweisen. Nutze str_detect aus dem packet stringr um die Präsenz einer Zeichenabfolge in einem String zu finden.
+- Speichere den Datensatz
+
+
+2. DW & Co enteignen II
+- Was ist die dutschnittliche Miete pro Unternehmertyp?

@@ -1,0 +1,18 @@
+---
+title: "weihnachtsaufgabe"
+output: pdf_document
+date: "2022-11-29"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Offene Frage 
+Überlege dir eine Fragestellung, welche du mit dem Datensatz *immo* beantworten möchtest. Beispiele sind: In welchem Bezirk finden sich die höchsten Angebotsmieten? Sind Mieten in alten oder neuen Gebäuden höher? Welche Vermieter:innen haben die höchsten Mieten? Welcher Vermieter:innentyp ist in welchen Bezirken am ehesten vertreten?
+
+Selbstverständlich kannst du auch einen anderen Datensatz deiner Wahl nutzen. 
+
+Beantworte die Aufgabe, indem du einen Markdown in R schreibst und sowohl Berechnungen mit *dplyr* als auch Plots mit *ggplot* kreierst.  
+
+Ein Tutotrial zu Markdowns findest du hier: https://www.rstudio.com/resources/webinars/getting-started-with-r-markdown/ 

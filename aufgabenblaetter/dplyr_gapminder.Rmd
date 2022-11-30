@@ -1,0 +1,49 @@
+---
+title: 'dplyr abd ggoplot2: gapminder'
+output: html_document
+date: "2022-11-25"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Intro 
+
+Wir laden die Bibliothek und die Daten von Gapminder. This gives us anexcerpt of the Gapminder data on life expectancy, GDP per capita, and population by country.
+
+```{r}
+# install.packages("gapminder")
+library(gapminder)
+```
+
+# Aufgaben 
+
+1. Bevölkerung
+- Was ist laut Gapminder Daten die Bevölkerung pro Jahr auf der gesammten Welt?
+
+```{r}
+pop_per_year <- gapminder %>%
+  group_by(year) %>%
+  summarize(mean_pop = mean(pop))
+
+pop_per_year
+```
+
+- Was ist die Mean Bevölkerung pro Kontinent? 
+- Was ist die Mean Bevölkerung pro Kontinent pro Jahr? 
+```{r}
+pop_per_continent <- gapminder %>%
+  group_by(continent, year) %>%
+  summarise(mean_pop = mean(pop), 
+            median_pop = median(pop)) 
+
+pop_per_continent
+```
+
+```{r}
+
+```
+
+
+

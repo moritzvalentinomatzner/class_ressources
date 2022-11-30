@@ -1,0 +1,109 @@
+---
+title: "dplyr_berlin_rental_market_loesungen"
+output: html_document
+date: "2022-11-25"
+---
+
+---
+title: "berlin_rental_market_loesungen"
+output: html_document
+date: "2022-11-25"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Berlin Rental Market 
+
+Lade den Datansatz *immo_reduced* und die Bibliotheken dpylr, read r und stringr
+
+```{r}
+library(dplyr)
+library(stringr)
+library(readr)
+
+immo_reduced <- read_csv("immo_reduced")
+```
+
+1. Erstelle eine neue Variable sqm_price, welche den Quadratmeterpreis der angebotenen Wohnungen angibt.  
+- Welche Unternehmen bieten die meißten Wohnungen an? 
+- Welcher Anbieter hat die höchste durchschnittliche Angebotsmiete pro QM? Inkludiere nur Anbierter:innen, die mehr als fünf Wohnungen anbieten. 
+- Welche Anbieter*innen haben die niedrigste durchschnittliche Angebotsmiete?
+
+```{r}
+immo_1 <- immo_reduced %>%
+  # wir nutzen mutate, da wir für jeden Fall in unserem Datensatz die Berechnung
+  # machen möchten. 
+  mutate(sqm_price = round(Rent/Area, 2))
+
+# meißten angebote 
+immo_1 %>%
+  group_by(Company) %>%
+  # wir nutzen summarise, da wir den Datensatz gruppiert haben 
+  # und mehrere Fälle zusammenfassen möchten 
+  summarise(amount_offers = n()) %>%
+  arrange(desc(amount_offers))
+
+
+immo_1 %>%
+  group_by(Company) %>%
+  # auch hier nutzen wir summarise, da wir uns Unterschiede nach Gruppenzugehörigkeit
+  # anschauen wollen. 
+  summarise(amount_offers = n(), 
+            average_rent = mean(sqm_price)) %>%
+  filter(amount_offers >5) %>%
+  arrange(desc(average_rent))
+```
+
+
+2. DW & Co enteignen I
+- Recherchiere alle Wohnungsunternehmen, welche laut DW&Co enteignen mehr als 2000 Wohnungen in Berlin vermieten. 
+- Recherchiere alle kommunalen Wohnungsunternehmen. 
+- Erstelle eine neue Variable "Vermieter_typ", welcher die angebotenen Wohnungen nach Vermietertyp klassifiziert: Privat, von enteignung betroffen, kommunale Unternehmen, Unternehmen.  
+- Tip: Manchmal hat das gleiche Unternehmen unterschiedliche Schreibweisen. Nutze str_detect aus dem packet stringr um die Präsenz einer Zeichenabfolge in einem String zu finden.
+- Speichere den Datensatz
+
+```{r}
+
+# (?i) macht das geschriebene case insenstive (egal ob groß oder klein geschrieben)
+unternehmen <- c("(?i)Deutsche Wohnen", 
+                 "(?i)Vonovia", 
+                 "(?i)AKELIUS", 
+                 "(?i)Covivio", 
+                 "(?i)TAG", 
+                 "(?i)Grand City Properties", 
+                 "(?i)GCP",
+                 "(?i)Hilfswerk", 
+                 "(?i)ADO", 
+                 "(?i)BGP", 
+                 "(?i)Deutsche Vermögens- und Immobilienverwaltungs")
+
+kommunale <- c("(?i)degewo", "(?i)gesobau", "(?i)Gewobag", "(?i)HOWOGE", "(?i)STADT UND LAND", "(?i)WBM")
+
+immo_final <- immo_reduced %>%
+  # hier suchen wir nach der ausprägung des strings. da das unternehmen manchmal anders genannt wird
+  # oder auch noch ein "AG" o.#. im Namen haben kann nutzen wir str_detect 
+  mutate(Vermieter_typ = case_when(str_detect(Company, paste(unternehmen, collapse = "|")) == T ~ "Von_enteignung_betroffen", 
+                                   str_detect(Company, paste(kommunale, collapse = "|")) == T ~ "Kommunale_Unternehmen",  
+                                   Company == "private" ~ "Privater_vermieter", 
+                                   str_detect(Company, paste(unternehmen, collapse = "|")) == F ~ "Andere_Unternehmen"
+  )) %>%
+  mutate(sqm_price = round(Rent/Area, 2))
+
+immo_final %>%
+  group_by(Vermieter_typ) %>%
+  summarise(count=n())
+
+# mit diesem code schreiben wir den neuen datensatz als CSV 
+# write_csv(immo_final, "immo_reduced_for_class")
+```
+
+2. DW & Co enteignen II
+- Was ist die dutschnittliche Miete pro Unternehmertyp?
+```{r}
+immo_final %>%
+  group_by(Vermieter_typ) %>%
+  summarise(average_rent = mean(sqm_price)) %>%
+  arrange(average_rent)
+```
