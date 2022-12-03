@@ -1,0 +1,108 @@
+---
+title: "ggplot_rental_market_loesung"
+output: pdf_document
+date: "2022-12-03"
+---
+
+Wir nutzen dplyr und ggplot2 um zwei Berliner Bezirke miteinander zu vergleichen. Filtere dafür nach den Bezirken Neukölln und Mitte. 
+
+# Scatterplot 
+- Plotte zwei Variablen in einem Scatterplot: Area und Rent. 
+- Nutze color und shape um den Plot nach Bezirk zu strukturieren.
+
+```{r}
+immo_filtered <- immo %>%
+  filter(district =="Neukoelln" | district == "Mitte") 
+```
+
+```{r , out.width="50%"}
+ggplot(data = immo_filtered) +
+  geom_point(mapping = aes(x=Area, 
+                           y=Rent, 
+                           shape=district, 
+                           color=district)) +
+  theme_classic()
+
+```
+
+# Setting vs. Mapping
+Reduziere nun die Größe und Deckkraft aller Punkte. Wende eine logarythmische Transformation an, um Area und Rent zu plotten. 
+
+```{r , , eval=F}
+ggplot() +
+  geom_point(data = immo_filtered,
+             mapping = aes(x=log(Area), 
+                           y=log(Rent),
+                           shape=district, 
+                           color=district),
+             size=1, 
+             alpha=0.75) +
+  theme_classic()
+```
+
+# Boxplot und Histogram 
+Vergleiche nun die Verteilung der Mieten in beiden Bezirken mit einen Boxplot und einem Histogram. Verwende einmal "identitiy" und einmal "stack" als Wert für das Argument "position" in dem Histogram. 
+
+```{r , , eval=F}
+ggplot(data = immo_filtered,
+       aes(y=log(Rent))) +
+  geom_boxplot(aes(color = district)) +
+  theme_classic()
+
+ggplot(data = immo_filtered,
+       aes(x=log(Rent))) +
+  geom_histogram(aes(fill = district))+
+  theme_classic()
+
+ggplot(data = immo_filtered,
+       aes(x=log(Rent))) +
+  geom_histogram(aes(fill = district), 
+                 position = "identity" # the default option is stack!
+                 )+
+  theme_classic()
+```
+
+
+# Facetting 
+Mache nun einen Facet wrap des density plot nach Bezirk 
+
+```{r, eval=F}
+ggplot(data = immo_filtered, 
+       aes(x=log(sqm_price))) +
+  geom_density(aes(fill=district), 
+               alpha=0.5) +
+  facet_wrap(~district, ncol = 1)+
+  theme_classic() +
+  theme(legend.position="none")
+```
+***
+# Jitter und violin
+- Mache nun einen jitter plot, bei dem der Median der beiden Verteilungen angezeigt ist. 
+
+```{r , out.width="10%"}
+ggplot(data = immo_filtered, 
+       aes(x=district,
+           y=log(sqm_price))
+       ) +
+  geom_jitter(alpha=0.5) +
+  stat_summary(fun = median, 
+               color="SteelBlue", 
+               size=1) +
+  theme_classic()
+```
+
+- Füge einen violin geom hinzu um die Verteilung sichtbar zu machen
+
+```{r}
+ggplot(data = immo_filtered,  
+       aes(x=district,
+           y=log(sqm_price))
+       ) +
+  geom_jitter(alpha=0.5) +
+  stat_summary(fun = median, 
+               color="SteelBlue", 
+               size=1) +
+  geom_violin(alpha=0.5, 
+              color="SteelBlue") +
+  theme_classic()
+```

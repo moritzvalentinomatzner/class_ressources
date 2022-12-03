@@ -1,0 +1,24 @@
+---
+title: "ggplot_exercises"
+output: pdf_document
+date: "2022-12-03"
+---
+
+Wir nutzen dplyr und ggplot2 um zwei Berliner Bezirke miteinander zu vergleichen. Filtere dafür nach den Bezirken Neukölln und Mitte. 
+
+# Scatterplot 
+- Plotte zwei Variablen in einem Scatterplot: Area und Rent. 
+- Nutze color und shape um den Plot nach Bezirk zu strukturieren. 
+
+# Setting vs. Mapping
+Reduziere nun die Größe und Deckkraft aller Punkte. Wende eine logarythmische Transformation an, um Area und Rent zu plotten. 
+
+# Boxplot und Histogram 
+Vergleiche nun die Verteilung der Mieten in beiden Bezirken mit einen Boxplot und einem Histogram. Verwende einmal "identitiy" und einmal "stack" als Wert für das Argument "position" in dem Histogram. 
+
+# Facetting 
+Mache nun einen Facet wrap des density plot nach Bezirk. 
+
+# Jitter und violin
+- Mache nun einen jitter plot, bei dem der Median der beiden Verteilungen angezeigt ist. 
+- Füge einen violin geom hinzu um die Verteilung sichtbar zu machen
