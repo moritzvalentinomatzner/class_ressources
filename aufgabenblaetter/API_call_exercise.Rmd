@@ -1,0 +1,26 @@
+---
+title: "API Call Hausaufgabe"
+output: pdf_document
+date: "2023-01-10"
+---
+
+# Bundestag API 
+
+Nutze den API des Bundestages um Drucksachen herunterzuladen und analysieren. Die Dokumentation der API findet sich hier: https://dip.bundestag.de/%C3%BCber-dip/hilfe/api#content
+
+Zur Nutzung ist ein API-Key notwendig. Der zunächst bis Ende Mai 2023 gültige API-Key lautet:
+GmEPb1B.bfqJLIhcGAsH9fTJevTglhFpCoZyAAAdhp
+
+# Aufgabe 1 
+Lade 100 kleine Anfragen herunter. Analysiere die Anfragen mit dplyr: Welche Fraktionen stellten die meißten Anfragen? Erstelle Plots mit ggplot2, bsw. um den Zeitverlauf von Anfragen zu visualisieren. 
+
+# Aufabe 2 
+Übersteigt die Anzahl der gefundenen Entitäten das jeweilige Limit, muss eine Folgeanfrage
+gestellt werden, um weitere Entitäten zu laden. Eine Folgeanfrage wird gebildet, indem alle Parameter der ursprünglichen Anfrage wiederholt werden und zusätzlich der cursor Parameter der letzten Antwort eingesetzt wird.
+
+Es können solange Folgeanfragen gestellt werden, bis sich der cursor nicht mehr ändert. Dies
+signalisiert, dass alle Entitäten geladen wurden.
+
+Hier findest du Informationen darüber, wie effizient ein Dataframe in einem Loop befüllt werden kann: https://stackoverflow.com/questions/29402528/append-data-frames-together-in-a-for-loop 
+
+

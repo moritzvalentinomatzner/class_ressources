@@ -1,0 +1,252 @@
+---
+title: "web_scraping"
+output: html_document
+date: "2023-01-09"
+---
+
+# API call 
+
+*Zuwendungsdatenbank*
+In der Zuwendungsdatenbank werden die von den Behörden bewilligten Zuwendungen an juristische Personen (ab einem Zuwendungsbetrag i. H. v. 100 Euro) rückwirkend für die letzten 5 Jahre veröffentlicht. Dies erfolgt jeweils zum 30. Juni eines jeden Jahres. Aktuell enthält die Datenbank die gewährten Zuwendungen der Jahre 2017-2021. 
+
+```{r}
+library(jsonlite)
+```
+
+https://www.berlin.de/sen/finanzen/service/zuwendungsdatenbank/index.php/api.html 
+
+Application Programming Interface 
+- Damit apps / programme miteinander sprechen können. 
+- Wenn du ein Uber buchst: 100+ apps die angesprochen werden, bsw. für das Routing oder Bezahlung
+- APIs sind das User Interface von Code:
+https://www.berlin.de/sen/finanzen/service/zuwendungsdatenbank/
+
+
+Restricted access
+- API Keys --> Damit wir individuell zuordnenbar sind und der API weiß wer wir sind
+- Sonst können wir einen Server overloaden (und wie eine DOS attacke ausschauen) 
+- Falls es keinen Key gibt können wir bsw. sys
+
+## Defining the API
+
+- Im Anwendungsbereich ist in unserem Fall ein API-call im Grunde einfach eine URL 
+- In der URL sind bestimmte Informationen gespeichert. 
+- Welche Informationen das sind finden wir in der Dokuemntation 
+
+```{r}
+# api documentation
+# https://www.berlin.de/sen/finanzen/service/zuwendungsdatenbank/
+  
+# base url 
+base_url <- "https://www.berlin.de/sen/finanzen/service/zuwendungsdatenbank/index.php"
+
+# who financed the project?
+geber = "Bezirksamt+Neukölln"
+# which data format?
+data = ".json"
+
+# we generate the url
+neukoelln <- paste0(base_url,
+                    "/.json?q=",
+                    "&geber=",geber)
+
+# and grab the json using the package jsonlite
+df_nk <- fromJSON(neukoelln)
+```
+
+lets look at what we got 
+```{r}
+df_nk$messages
+df_nk$results
+df_nk$index
+df_nk$item
+```
+
+We only get the results from one page! 
+--> how many pages do we have to scrape?
+```{r}
+# how many total results?
+df_nk$results$count
+# how many per page?
+df_nk$results$items_per_page
+# so how many pages to scrape?
+n_pages <- df_nk$results$count/df_nk$results$items_per_page
+# we need to round to the next larger integer 
+n_pages_ceiling <- ceiling(n_pages)
+```
+
+we add a page number to our api call 
+```{r}
+page_number <- 1
+neukoelln_pages <- paste0(neukoelln, 
+                          "&page=", 
+                          page_number)
+df_nk_pages <- fromJSON(neukoelln_pages)
+df_nk_pages$index
+
+page_number <- 2
+neukoelln_pages <- paste0(neukoelln, 
+                          "&page=", 
+                          page_number)
+df_nk_pages <- fromJSON(neukoelln_pages)
+df_nk_pages$index
+```
+
+and now we need to loop through all the pages
+```{r loop: a test run}
+#for (i in n_pages_ceiling) {
+for (i in 1:2) {
+  page_number = i
+  neukoelln_pages <- paste0(neukoelln, 
+                          "&page=", 
+                          page_number)
+  df_nk_pages <- fromJSON(neukoelln_pages)
+  print(df_nk_pages$index)
+}
+```
+combine the results to one df 
+```{r loop: a test run}
+# create a base df that will be populated in the loop
+base_df <- df_nk$index[0,]
+#for (i in n_pages_ceiling) {
+for (i in 1:2) {
+  page_number = i
+  print(paste0("Scraper is on page ", i))
+  neukoelln_pages <- paste0(neukoelln, 
+                          "&page=", 
+                          page_number)
+  df_nk_pages <- fromJSON(neukoelln_pages)
+  base_df <- rbind(base_df, 
+                   df_nk_pages$index)
+}
+```
+
+## Create the final scraper 
+```{r final scraper}
+# create a base df that will be populated in the loop
+base_df <- df_nk$index[0,]
+#for (i in n_pages_ceiling) {
+for (i in 1:n_pages_ceiling) {
+  # clear the output 
+  cat("\014")      
+  # define the page number 
+  page_number = i   
+  # print our progress
+  print(paste0("Scraper is on page ", i, " of ",n_pages_ceiling))
+  # call the API
+  neukoelln_pages <- paste0(neukoelln, 
+                          "&page=", 
+                          page_number)
+  # create a df from the api call 
+  df_nk_pages <- fromJSON(neukoelln_pages)
+  # append it to our existing df
+  base_df <- rbind(base_df, 
+                   df_nk_pages$index)
+}
+```
+
+next step: define a function for different geber 
+```{r fincal scraper function}
+finanz_scraper <- function(geber){
+  
+  #### we generate a first api call
+  
+  # base url 
+  base_url <- "https://www.berlin.de/sen/finanzen/service/zuwendungsdatenbank/"
+  # who financed the project? --> the argument of our function! 
+  geber = geber
+  # which data format?
+  data = ".json"
+  
+  # we generate the url
+  finance_url <- paste0(base_url,
+                      "index.php/index/index.json?q=",
+                      "&geber=",geber)
+  
+  # and do our first api call 
+  finance_df <- fromJSON(finance_url)
+
+  #### we look at the results 
+  
+  # how many total results?
+  finance_df$results$count
+  # how many per page?
+  finance_df$results$items_per_page
+  # so how many pages to scrape?
+  n_pages <- finance_df$results$count/finance_df$results$items_per_page
+  # we need to round to the next larger integer 
+  n_pages_ceiling <- ceiling(n_pages)
+  
+  #### we call the API 
+  base_df <- finance_df$index[0,]
+  #for (i in n_pages_ceiling) {
+  for (i in 1:n_pages_ceiling) {
+    # clear the output 
+    cat("\014")      
+    # define the page number 
+    page_number = i   
+    # print our progress
+    print(paste0("Geber: ",geber, " | Scraper is on page ", i, " of ",n_pages_ceiling))
+    # call the API
+    finance_pages <- paste0(finance_url, 
+                            "&page=", 
+                            page_number)
+    # create a df from the api call 
+    df_finance_temporary <- fromJSON(finance_pages)
+    # append it to our existing df
+    base_df <- rbind(base_df, 
+                     # we access the df of the api call 
+                     df_finance_temporary$index)
+  }
+  return(base_df)
+}
+```
+
+call the function
+```{r}
+finanz_scraper(geber = paste("Bezirksamt+Mitte"))
+```
+
+scape n bezirke
+```{r}
+districts <- c("Mitte", "Neukölln", "Treptow-Köpenick")
+
+# create empty df
+final_df=NULL
+
+# call function in loop
+for (district in districts) {
+  temp_df <- finanz_scraper(geber = paste0("Bezirksamt+", district))
+  # populate df
+  final_df <- rbind(final_df, 
+                    temp_df)
+}
+```
+
+# Analysis
+
+```{r libraries}
+library(dplyr)
+library(ggplot2)
+```
+
+
+```{r}
+# financing by year by district 
+financing_jahr <- final_df %>%
+  group_by(geber, jahr) %>%
+  summarise(gesamtbetrag = sum(as.numeric(betrag)))
+
+ggplot(financing_jahr, aes(x=as.numeric(jahr), 
+                           y=gesamtbetrag, 
+                           col=geber)) +
+  geom_line() +
+  theme_bw()
+
+# average zuwendung?
+ggplot(final_df, aes(x=log(as.numeric(betrag)), 
+                     fill=geber)) +
+  geom_density(alpha=0.5) +
+  theme_bw()
+```
+

@@ -1,0 +1,366 @@
+---
+title: "police_press_scraper"
+output: html_document
+date: "2023-01-09"
+---
+
+---
+title: "police_press_scraper_2"
+output: html_document
+date: "2022-11-10"
+---
+
+```{r libraries}
+library(dplyr)
+library(readr)
+library(rvest)
+```
+
+# Webscraping
+
+## What do websites contain?
+```{r}
+# html
+<!DOCTYPE html>
+  <html>
+  <body>
+  
+    <h1>My First Heading</h1>
+    <p>My first paragraph.</p>
+    <p>My second paragraph has a <a href=www.link.de>link</a> to another webiste</p>
+  
+  </body>
+  </html> 
+  
+# und CSS, welches uns sagt wie die einzelnen sachen auszusehen haben
+  
+<!DOCTYPE html>
+  <html>
+  <body>
+    <h1 class="header">My First Heading</h1>
+  
+  <div class="paragraph">
+      <p>My first paragraph.</p>
+  </div>
+  
+  <div id="xy"
+    <p>My second paragraph has a <a href=www.link.de>link</a> to another webiste</p>
+  </div>
+  
+  </body>
+  </html> 
+  
+```
+
+Ablauf: 
+- Finde die Daten auf einer Webseite die dich interessieren 
+- Schau dir den Seitenquelltext an 
+- Importiere die html einer website mit read_html
+- Finde die Daten auf der heruntergelandenen website mit html_nodes
+- Lade die Daten systematisch herunter 
+
+# Scraper 1: Countries of the World 
+
+```{r}
+# we always start by downloading a webpage html
+countries <- read_html("http://www.scrapethissite.com/pages/simple/")
+
+country_name <- countries %>%
+  # we then extract the html_nodes we are interested in 
+  html_nodes(".country-name") %>%
+  # and the text from the html
+  html_text() 
+
+  # fixing a problem with the string 
+  library(stringr)
+  country_name_2 <- coutry_name %>%
+    str_replace_all("\n", "")
+
+country_capital <- countries %>%
+  html_nodes(".country-capital") %>%
+  html_text()
+
+country_population <- countries %>%
+  html_nodes(".country-population") %>%
+  html_text()
+
+#combine the scraped data to a tibble
+countries <- tibble(country_name_2, country_capital, country_population)
+```
+
+# Scaper 2: Spiegel Online
+
+```{r Alle Aritkel}
+website_2 <- read_html("https://www.spiegel.de/politik/deutschland/")
+
+title <- website_2 %>%
+  html_nodes("h2") %>%
+  html_nodes("a") %>%
+  html_attr("title")
+
+href <- website_2 %>%
+  html_nodes("h2") %>%
+  html_nodes("a") %>%
+  html_attr("href")
+
+```
+
+```{r Thema}
+spiegel_spd <- read_html("https://www.spiegel.de/thema/spd/")
+
+spiegel_title <- spiegel_spd %>%
+  html_nodes("[class='relative']") %>%
+  html_nodes("a") %>%
+  html_attr("title")
+
+spiegel_href <- spiegel_spd %>%
+  html_nodes("[class='relative']") %>%
+  html_nodes("a") %>%
+  html_attr("href")
+
+spiegel_single_page <- read_html(href[2])
+
+spiegel_single_page %>%
+  html_node(".timeformat") %>%
+  html_text()
+```
+
+Now we have to loop!
+```{r}
+for(i in 1:length(href)){
+  spiegel_single_page <- read_html(href[i])
+  time <- spiegel_single_page %>%
+    html_node(".timeformat") %>%
+    html_text()
+}
+```
+
+But looking in the quelltext we find something interesting
+
+```{r}
+spiegel_single_page <- read_html(href[2]) %>%
+  html_nodes("meta") 
+
+date <- spiegel_single_page[14] %>%
+  html_attr("content")
+
+last_modified <- spiegel_single_page[15] %>%
+  html_attr("content")
+
+author <- spiegel_single_page[13] %>%
+  html_attr("content")
+
+key_words <- spiegel_single_page[18] %>%
+  html_attr("content")
+```
+
+Better: 
+```{r}
+for(i in 1:length(href)){
+  spiegel_single_page <- read_html(href[i]) %>%
+    html_nodes("meta") 
+
+  date <- spiegel_single_page[14] %>%
+    html_attr("content")
+  
+  print(date)
+  last_modified <- spiegel_single_page[15] %>%
+    html_attr("content")
+  
+  print(last_modified)
+  author <- spiegel_single_page[13] %>%
+    html_attr("content")
+  
+  print(author)
+  key_words <- spiegel_single_page[18] %>%
+    html_attr("content")
+  
+  print(key_words)
+}
+```
+
+even better - finding the json data format 
+
+```{r}
+spiegel_single_page <- read_html(href[2])
+
+json <- spiegel_single_page %>%
+  html_node("script") %>%
+  html_text() %>%
+  str_remove_all("\n") 
+
+# extracting the json
+json_single_page <- fromJSON(json)
+
+# and getting the first row 
+one_article <- json_single_page[1,]
+```
+
+Scraping one site:
+```{r}
+
+for (i in i:476) {
+  
+}
+
+spiegel_spd <- read_html("https://www.spiegel.de/thema/spd/")
+
+# and the link to the full text for each article 
+spiegel_href <- spiegel_spd %>%
+  html_nodes("[class='relative']") %>%
+  html_nodes("a") %>%
+  html_attr("href")
+
+# we then lopp through each of the hrefs
+# but first create an empty df
+page_df = NULL
+
+for (i in 1:length(spiegel_href)) {
+  # and extract the information in the json format
+  spiegel_single_page <- read_html(href[i])
+  
+  json <- spiegel_single_page %>%
+    html_node("script") %>%
+    html_text() %>%
+    str_remove_all("\n") 
+  
+  # extracting the json
+  json_single_page <- fromJSON(json)
+  
+  # and getting the first row 
+  one_article <- json_single_page[1,]
+  
+  date <- one_article$dateCreated
+  headline <- one_article$headline
+  url <- one_article$url
+  
+  # clear the output 
+  #cat("\014") 
+  print(paste0("Scraping Article ", i, " of ", length(spiegel_href)))
+  # in every iteration, we add the rows of the new df to the existing rows
+  article_df <- data.frame(date, headline, url)
+  page_df <- rbind(page_df,
+                    article_df)
+}
+
+```
+Scraping all pages 
+```{r}
+final_df <- NULL
+n_pages <- 3
+for (i in 1:n_pages) {
+  # create the url 
+  url <- paste0("https://www.spiegel.de/thema/spd/p", i)  
+  spiegel_spd <- read_html(url)
+  
+  # and the link to the full text for each article 
+  spiegel_href <- spiegel_spd %>%
+    html_nodes("[class='relative']") %>%
+    html_nodes("a") %>%
+    html_attr("href")
+  
+  # we then lopp through each of the hrefs
+  # but first create an empty df
+  page_df = NULL
+  
+  for (j in 1:length(spiegel_href)) {
+    # and extract the information in the json format
+    spiegel_single_page <- read_html(spiegel_href[j])
+    
+    json <- spiegel_single_page %>%
+      html_node("script") %>%
+      html_text() %>%
+      str_remove_all("\n") 
+    
+    # extracting the json
+    json_single_page <- fromJSON(json)
+    
+    # and getting the first row 
+    one_article <- json_single_page[1,]
+    
+    date <- one_article$dateCreated
+    headline <- one_article$headline
+    url <- one_article$url
+    
+    # clear the output 
+    cat("\014") 
+    print(paste0("On page ", i, " of ", n_pages, ", Scraping Article ", j, " of ", length(spiegel_href)))
+    # in every iteration, we add the rows of the new df to the existing rows
+    article_df <- data.frame(date, headline, url)
+    page_df <- rbind(page_df,
+                      article_df)
+  }
+  
+  final_df <- rbind(final_df, 
+                    page_df)
+}
+```
+
+Scraping all keyword and pages with a function: 
+
+```{r}
+scraper_spiegel <- function(keyword, n_pages){
+  
+  final_df <- NULL
+  n_pages <- n_pages
+  
+  for (i in 1:n_pages) {
+    # create the url 
+    url <- paste0("https://www.spiegel.de/thema/", keyword,"/p", i)  
+    spiegel_site <- read_html(url)
+    
+    # and the link to the full text for each article 
+    spiegel_href <- spiegel_site %>%
+      html_nodes("[class='relative']") %>%
+      html_nodes("a") %>%
+      html_attr("href")
+    
+    # we then lopp through each of the hrefs
+    # but first create an empty df
+    page_df = NULL
+    
+    for (j in 1:length(spiegel_href)) {
+      # and extract the information in the json format
+      spiegel_single_page <- read_html(spiegel_href[j])
+      
+      json <- spiegel_single_page %>%
+        html_node("script") %>%
+        html_text() %>%
+        str_remove_all("\n") 
+      
+      # extracting the json
+      json_single_page <- fromJSON(json)
+      
+      # and getting the first row 
+      one_article <- json_single_page[1,]
+      
+      date <- one_article$dateCreated
+      headline <- one_article$headline
+      url <- one_article$url
+
+      # clear the output 
+      cat("\014") 
+      print(paste0("On page ", i, " of ", n_pages, ", Scraping Article ", j, " of ", length(spiegel_href)))
+      # in every iteration, we add the rows of the new df to the existing rows
+      article_df <- data.frame(date, 
+                               headline, 
+                               url)
+      # append the page df
+      page_df <- rbind(page_df,
+                        article_df)
+    }
+    
+    
+    # append the final
+    final_df <- rbind(final_df, 
+                      page_df)
+  }
+  return(final_df)
+}
+```
+
+```{r}
+# übersicht über themen: https://www.spiegel.de/thema/index-a/
+
+afd_articles <- scraper_spiegel("alternative_fuer_deutschland", 1)
+```
