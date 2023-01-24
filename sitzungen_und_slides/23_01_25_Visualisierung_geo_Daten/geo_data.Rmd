@@ -1,0 +1,407 @@
+---
+title: "spatial"
+output: html_document
+date: "2023-01-20"
+---
+
+#####################
+# Spatial Data in R #
+#####################
+
+Geographic data is stored in Shapefiles 
+
+We can find data on Berlin here: https://daten.odis-berlin.de/
+
+# Intro 
+## Load libraries 
+```{r}
+library(readxl)   # to read excel data 
+library(dplyr)    # for data manipulation
+library(ggplot2)  # viz option 1 
+library(tmap)     # viz option 2
+library(leaflet)  # viz option interactive
+library(htmltools)# extra stuff for leaflet 
+library(leaflet.extras) # further extra stuff for leaflet
+```
+
+## How to (down)load files directly from the web
+
+So far we have mainly loaded locally stored data. 
+
+However, it might come in handy to dowload data from the web w/o locally storing it.
+
+```{r}
+## Berlin shp 
+# create temp files 
+temp <- tempfile()
+temp2 <- tempfile()
+# Download the zip file and save to 'temp' 
+url_berlin_shp <- "https://tsb-opendata.s3.eu-central-1.amazonaws.com/lor_planungsgraeume_2021/lor_planungsraeume_2021.shp.zip"
+download.file(url_berlin_shp, temp)
+# Unzip the contents of the temp and save unzipped content in 'temp2'
+unzip(zipfile = temp, 
+      exdir = temp2)
+# And load the shp
+berlin_shp <- read_sf(temp2)
+
+## socio-econ data for Berlin
+temp_3 <- tempfile()
+url_berlin_context <- "https://www.berlin.de/sen/sbw/_assets/stadtdaten/stadtwissen/monitoring-soziale-stadtentwicklung/bericht-2021/tabelle_1_gesamtindex_soziale_ungleichheit_sdi_mss_2021.xlsx"
+download.file(url_berlin_context, temp_3)
+
+# import the data
+berlin_context <- read_excel(temp_3, 
+                             skip = 5, 
+                             col_names = F)
+
+## Streets in Berlin
+url_streets <- "https://tsb-opendata.s3.eu-central-1.amazonaws.com/detailnetz_strassenabschnitte/Detailnetz-Strassenabschnitte.shp.zip"
+temp_4 <- tempfile()
+temp_5 <- tempfile()
+download.file(url_streets, temp_4)
+unzip(zipfile = temp_4, 
+      exdir = temp_5)
+berlin_streets <- read_sf(temp_5)
+```
+# Spatial Data
+
+```{r}
+library(sf)          # classes and functions for vector data
+library(terra)      # classes and functions for raster data
+```
+We have two ways of conceptualizing spatial data:
+- The *vector data model* represents the world using points, lines and polygons. These have discrete, well-defined borders, meaning that vector datasets usually have a high level of precision (but not necessarily accuracy) 
+- The *raster data model* divides the surface up into cells of constant size. Raster datasets are the basis of background images used in web-mapping and have been a vital source of geographic data since the origins of aerial photography and satellite-based remote sensing devices. Rasters aggregate spatially specific features to a given resolution, meaning that they are consistent over space and scalable (many worldwide raster datasets are available).
+
+*Which to use?* The answer likely depends on your domain of application:
+- Vector data tends to dominate the social sciences because human settlements tend to have discrete borders
+- Raster dominates many environmental sciences because of the reliance on remote sensing data
+
+## Vector Data
+- The geographic vector data model is based on points located within a coordinate reference system (CRS). 
+- Points can represent self-standing features (e.g., the location of a bus stop) or they can be linked together to form more complex geometries such as lines and polygons. 
+- Most point geometries contain only two dimensions (3-dimensional CRSs contain an additional z value, typically representing height above sea level).
+- Coordinates consist of two numbers representing distance from an origin, usually in x then y dimensions.
+
+```{r Point data}
+# create temp files 
+temp_01 <- tempfile()
+# Download the file and save to 'temp' 
+right_wing_url <- "https://github.com/acoabo/rechte_Gewalt_neukoelln/raw/main/data_complete_geocoded_3.xlsx"
+download.file(right_wing_url, temp_01)
+# And load the excel 
+right_wing <- read_excel(temp_01)
+
+# we create a spatial data frame
+right_wing_sf <- st_as_sf(right_wing, 
+                          # define what the coordinates are 
+                          coords=c("lon", "lat"), 
+                          # and its reference system  
+                          crs="EPSG:4326")
+
+class(right_wing_sf)
+names(right_wing_sf)
+```
+
+Es gibt verschiedenen Möglichkeiten, spatial data in R zu nutzen - SF ist ein Paket dafür. 
+- Es wird auch in anderen Programmen benutzt
+- Es funktioniert in Kombination mit dem tidyverse 
+
+Wenn wir sf objects plotten werden die einzelnen variablen für die Punkte angezeigt
+```{r}
+plot(right_wing_sf)
+
+rw_fil <- right_wing_sf %>%
+  filter(Deliktsart == "Gewalt")
+
+class(rw_fil)
+```
+
+Die Geographie ist "sticky" - sie ist immer mit den variablen verbunden 
+
+```{r}
+summary(right_wing_sf["Ortsteil"])
+```
+
+Spatial Data Frames (sf) geben uns neben dem "normalen" df noch viele weitere Informationen über die Daten: 
+- Geometry type (point)
+- Dimension
+- Bounding box
+- CRS (Coordinate Reference System)
+```{r}
+right_wing
+right_wing_sf
+```
+
+# Plotting Spatial Data  
+
+## tmap
+
+- Basiert wie ggplot auf der "grammar of graphics" und aufeinander gelayerten Ebene
+
+```{r}
+# definiere das shapefile
+tm_shape(berlin_shp) +
+  # und fülle die polygone
+  tm_fill() +
+  tm_borders()
+
+# definiere das shapefile
+tm_shape(berlin_shp) +
+  # und mache die borders
+  tm_borders()
+
+# definiere das shapefile
+tm_berlin <- tm_shape(berlin_shp) +
+                    # und fülle die polygone 
+                    tm_fill() +
+                    # und mache die borders
+                    tm_borders() 
+
+tm_berlin
+```
+
+#### Aufgabe 
+1. Filter die Berlin daten für Neukölln und füge die right_wing_sf hinzu
+2. Füge das straßenetz hinzu
+
+```{r}
+
+# Nummer 1
+nk_shp <- berlin_shp %>%
+  filter(BEZ == "08")
+
+plot(nk_shp)
+
+tm_shape(nk_shp) +
+  tm_fill() +
+  tm_borders() +
+  tm_shape(right_wing_sf) +
+  tm_dots()
+
+# Straßennetz
+nk_streets <- berlin_streets %>%
+  filter(bezirk == "Neukölln")
+
+tm_shape(nk_shp) +
+  tm_fill() +
+  tm_borders() +
+  tm_shape(nk_streets) +
+  tm_lines() +
+  tm_shape(right_wing_sf) +
+  tm_dots(col="red", 
+          size=0.1)
+```
+
+Jetzt schauen wir uns die aesthetics an
+
+```{r}
+nk_tmap <- tm_shape(nk_shp) +
+              tm_fill(col = "white") +
+              tm_borders(col = "darkblue") +
+              tm_shape(nk_streets) +
+              tm_lines() +
+              tm_shape(right_wing_sf) +
+              tm_dots(col="darkred", 
+                      size = 0.1) 
+
+nk_tmap
+```
+
+## ggplot2 
+```{r}
+ggplot(berlin_streets) +
+  geom_sf(color="red", 
+          size = 0.3) +
+  theme_minimal() 
+```
+
+adding data 
+Grundlage der Index-Indikatoren 
+- Arbeitslosigkeit (nach SGB II), 
+- Transferbezug der Nichtarbeitslosen (nach SGB II und XII) und
+- Kinderarmut (Transferbezug SGB II der unter 15-Jährigen).
+
+--> Join Spatial and Kontextdata with unique IDs
+```{r}
+shp_context <- left_join(berlin_context, 
+                         berlin_shp, 
+                         by=c("...1"="PLR_ID")
+                         )
+
+# we create a sf object
+shp_context_sf <- st_as_sf(shp_context)
+
+```
+
+```{r}
+ggplot() +
+  geom_sf(data = shp_context_sf, 
+          aes(fill=...5), 
+          color="white", 
+          alpha=0.5) +
+  geom_sf(data = berlin_streets, 
+          size = 0.1) +
+  theme_minimal() 
+
+```
+
+
+## Point data
+
+filter streets for our area of interest 
+```{r}
+streets_nk <- berlin_streets %>%
+  filter(bezirk == "Neukölln")
+```
+
+to then plot them x
+```{r}
+ggplot() +
+  geom_sf(data = streets_nk, 
+          size = 0.1) +
+  geom_sf(data = right_wing_sf, 
+          size = 0.5,
+          color="red") +
+  theme_bw()
+
+```
+
+A major problem with point data is overplotting (multiple data points on one location)
+--> we can jitter the data to avoid this 
+
+```{r}
+rw_jittered <- st_jitter(right_wing_sf, 
+                         factor = 0.005)
+
+ggplot() +
+  geom_sf(data = streets_nk, 
+          size = 0.1) +
+  geom_sf(data = rw_jittered, 
+          size = 0.5,
+          color="red") +
+  theme_bw()
+```
+
+
+Another possibility is to group the data by location, count it and then plot the count
+
+```{r}
+right_wing_grouped <- rw_jittered %>%
+  group_by(Straße) %>%
+  summarise(Anzahl = n())
+```
+
+```{r}
+ggplot() +
+  geom_sf(data = streets_nk, 
+          size = 0.1) +
+  geom_sf(data = right_wing_grouped, 
+          aes(size = Anzahl),
+          color="darkred") +
+  theme_bw() 
+```
+
+Something we often want to do is put points in relation to polygons 
+-> st_join counts the n of points per polygon 
+```{r}
+nk_shp <- berlin_shp %>%
+  filter(BEZ == "08") %>%
+  st_transform("EPSG:4326")
+
+rw_sf <- st_join(x = nk_shp, 
+                 right_wing_sf) %>%
+  group_by(PLR_NAME) %>%
+  summarise(count = n())
+
+rw_sf
+```
+
+Plot possibilities
+```{r}
+ggplot() +
+  geom_sf(data = nk_shp, 
+          fill=NA, 
+          size=0.4) +
+  geom_sf(data = streets_nk, 
+          size = 0.1) +
+  geom_sf(data = rw_jittered, 
+          size = 0.5,
+          color="red") +
+  theme_bw()
+
+# now color the polygons with the amount of attacks 
+ggplot() +
+  geom_sf(data = rw_sf, 
+          aes(fill=count), 
+          size=0.4, 
+          alpha=0.5) +
+    scale_fill_viridis_c(option = "D") +
+    geom_sf(data = streets_nk, 
+          size = 0.1) +
+  geom_sf(data = right_wing_grouped, 
+          aes(size = Anzahl),
+          color="darkred") +
+  theme_minimal()
+
+# --> who can spot the problem?
+
+```
+
+# leaflet 
+
+A leaflet base plot: 
+```{r}
+leaflet() %>%
+  # add a map (OSM is the default)
+  addTiles() %>%
+  # and add our polygon data 
+  addMarkers(data=right_wing)
+```
+
+and a more advanced version .. 
+
+```{r}
+leaflet() %>%
+  # we add a default tile
+  addTiles(group = "OSM (default)") %>%
+  # and third-party tiles. 
+  # The grouping argument refers to the "addLayersControl" in the bottom
+  addProviderTiles(providers$Stamen.Toner, group = "Toner") %>%
+  addProviderTiles(providers$Stamen.TonerLite, group = "Toner Lite") %>%  
+  # adding polygons 
+  addPolygons(data = nk_shp, 
+              # we color the boundaries black
+              color = "black",
+              # and reduce their weight
+              weight = 1,
+              # fill them with white
+              fillColor = "white") %>%
+  # the first circle markers are jittered 
+  addCircleMarkers(data=rw_jittered,
+                   # their color is red
+                   color = "red",
+                   # and the radius (read: size) is fixed at 0.1
+                   radius = 0.1,
+                   # we as well create a popup lable 
+                   # the ~ makes the popup look 
+                   # in the df for each observation (lik aes()!)
+                   popup = ~paste("<b>Sachverhalt</b>: ", Sachverhalt,
+                                  # and use some html to make it look nice
+                                  "</br>", 
+                                  "<b>Deliktsart:</b>", Deliktsart), 
+                   # and we define again a group for this 
+                   group = "Gesamt") %>%
+  addCircleMarkers(data=right_wing,
+             clusterOptions = markerClusterOptions(), 
+             label = ~htmlEscape(Sachverhalt), 
+             group = "Clustered") %>%
+  # adding a search bar means we can search for addresses in the OSM 
+  addSearchOSM(options = searchOptions(collapsed = T)) %>%
+  addLayersControl(baseGroups = c("Toner Lite", "Toner", "OSM (default)"),
+                   overlayGroups = c("Gesamt", "Clustered"))
+```
+
+
+
+

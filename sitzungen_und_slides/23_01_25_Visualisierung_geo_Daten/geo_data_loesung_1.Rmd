@@ -1,0 +1,44 @@
+---
+title: "Lösung zu Spatial Data"
+output: html_document
+date: "2023-01-24"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Aufgabe 1: tmap
+Filter die Berlin Daten für den Bezirk Neukölln. Nutze tmap und plotte in eier Karte
+- (i) Polygone innerhalb von Neukölln, 
+- (ii) Daten zu rechten Straftaten und 
+- (iii) Straßennetz von Neukölln 
+
+```{r}
+nk_shp <- berlin_shp %>%
+  filter(BEZ == "08")
+
+plot(nk_shp)
+
+tm_shape(nk_shp) +
+  tm_fill() +
+  tm_borders() +
+  tm_shape(right_wing_sf) +
+  tm_dots()
+
+nk_streets <- berlin_streets %>%
+  filter(bezirk == "Neukölln")
+
+tm_shape(nk_shp) +
+  tm_fill() +
+  tm_borders() +
+  tm_shape(nk_streets) +
+  tm_lines() +
+  tm_shape(right_wing_sf) +
+  tm_dots() 
+```
+
+# Aufgabe 2: Wahldaten in Berlin 
+- Recherchiere die Ergebnisse der letzten AhH Wahl und shapefiles der Wahlbezirke
+- Plotte die Wahlergebnisse einer beliebigen Fraktion für ganz Berlin und einen Bezirk deiner Wahl 
+- Realisiere die Aufgabe mit tmap, ggplot und leaflet
